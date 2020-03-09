@@ -1,0 +1,74 @@
+.Register {
+  //   display: flex;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  top: 27%;
+  left: 40%;
+  width: 300px;
+}
+
+.Register__title {
+  color: #000;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.Register__form {
+  align-items: center;
+  margin-top: 40px;
+}
+
+.input {
+  display: block;
+  width: 280px;
+  border: none;
+  border-bottom: #000;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+}
+.input:focus {
+  outline: none !important;
+}
+
+.form__underline {
+  background-color: rgb(196, 196, 196);
+  display: block;
+  height: 1px;
+  // position: absolute;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.form__button {
+  font-family: "Josefin Sans", sans-serif;
+  width: 200px;
+  height: 50px;
+  //background-color: #f9f3f5ff;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 300;
+  // margin-top: 20px;
+}
+
+.form__button:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.input__error {
+  color: red;
+  font-weight: 300;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Josefin Sans", sans-serif;
+}

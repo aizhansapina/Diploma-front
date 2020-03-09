@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Poiret+One|Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300|Poiret+One|Raleway&display=swap");
+
+.banner {
+  //background-image: url("../../../images/kylie-skin-banner.jpeg");
+  height: 100vh;
+  background-position: center;
+  text-align: center;
+}
+
+.banner__content {
+  padding-top: 600px;
+}
+
+.Header__title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 46px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.banner__title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 46px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 400;
+}
+
+.banner__button {
+  font-family: "Josefin Sans", sans-serif;
+  width: 200px;
+  height: 50px;
+  background-color: #000;
+  text-transform: uppercase;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-decoration: none;
+}
+
+.button__text {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (min-width: 1920px) {
+  .banner__button {
+    width: 250px;
+    height: 70px;
+    font-size: 18px;
+  }
+
+  .banner__title {
+    font-size: 50px;
+    letter-spacing: 4px;
+  }
+
+  .banner__content {
+    padding-top: 800px;
+  }
+}
+
+@media (max-width: 375px) {
+  .banner {
+    background-image: url("../../../images/mobile.jpg");
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .banner__content {
+    padding-top: 100px;
+  }
+
+  .banner__button {
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+    background-color: black;
+  }
+
+  .banner__title {
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: #000;
+  }
+}
+
+@media (max-width: 320px) {
+  .banner {
+    background-image: url("../../../images/mobile.jpg");
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .banner__content {
+    padding-top: 230px;
+  }
+
+  .banner__button {
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+  }
+
+  .banner__title {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
+}
+
+// @media (max-width: 1920px) {
+//   .banner {
+//     background-size: cover;
+//   }
+
+//   .banner__content {
+//     padding-top: 770px;
+//   }
+
+//   .banner__button {
+//     width: 270px;
+//     height: 70px;
+//     font-size: 18px;
+//   }
+
+//   .banner__title {
+//     font-size: 50px;
+//     letter-spacing: 4px;
+//   }
+// }
