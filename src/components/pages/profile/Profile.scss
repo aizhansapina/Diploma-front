@@ -8,8 +8,8 @@
 
 .Cart__title {
   color: #000;
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-family: "Josefin Sans", sans-serif;
@@ -46,19 +46,22 @@
 }
 .Cart__row {
   display: table-row;
+  background-color: #ffd14f;
+  border-radius: 5px;
 }
 
 .head__titles {
   color: #000;
-  font-weight: 300;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-family: "Raleway", sans-serif;
 }
 
 .row-name {
-  width: 550px;
+  width: 300px;
+  padding: 20px;
 }
 .row-image {
   padding: 20px;
@@ -77,6 +80,16 @@
   letter-spacing: 3px;
   font-family: "Raleway", sans-serif;
   display: inline-block;
+}
+
+.product__description {
+  color: #000;
+  font-weight: 200;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: "Raleway", sans-serif;
+  display: block;
 }
 
 .button__delete {

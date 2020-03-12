@@ -35,29 +35,40 @@ class Profile extends Component {
             <table className="Cart__items" key={item.id}>
               <thead className="Cart__head">
                 <tr>
-                  <th className="head__titles">Product</th>
-                  <th className="head__titles">Name</th>
+                  <th className="head__titles">Product Name</th>
+                  <th className="head__titles">Description</th>
                   <th className="head__titles">Price</th>
-                  <th className="head__titles">Quantity</th>
-                  <th className="head__titles">Edit</th>
+                  <th className="head__titles">Start date</th>
+                  <th className="head__titles">Finish date</th>
+                  <th className="head__titles">Days left</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="Cart__row">
                   <td className="row-image">
-                    <img
+                    {/* <img
                       src={item.img}
                       alt={item.img}
                       className="product__image"
-                    />
+                    /> */}
+                    <p className="product__name">{item.title}</p>
                   </td>
                   <td className="row-name">
-                    <p className="product__name">{item.title}</p>
+                    <p className="product__description">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum.
+                    </p>
                   </td>
                   <td>
                     <span className="product__name">${item.price}</span>
                   </td>
-                  <td className="quantity__col">
+                  {/* <td className="quantity__col">
                     <div className="product__quantity">
                       <Link to="/main/profile">
                         <button
@@ -77,7 +88,7 @@ class Profile extends Component {
                       type="text"
                       className="quantity-input"
                       value={item.quantity}
-                    ></input> */}
+                    ></input> 
                       <p className="quantity__text">{item.quantity}</p>
                       <Link to="/main/profile">
                         <button
@@ -94,20 +105,15 @@ class Profile extends Component {
                         </button>
                       </Link>
                     </div>
+                  </td>*/}
+                  <td>
+                    <span className="product__name">07/03/2020</span>
                   </td>
                   <td>
-                    <button
-                      className="button__delete"
-                      onClick={() => {
-                        this.handleRemove(item.id);
-                      }}
-                    >
-                      <img
-                        src={delet}
-                        alt={delet}
-                        className="product__delete"
-                      />
-                    </button>
+                    <span className="product__name">12/04/2020</span>
+                  </td>
+                  <td>
+                    <span className="product__name">26 days</span>
                   </td>
                 </tr>
               </tbody>
@@ -117,7 +123,7 @@ class Profile extends Component {
       })
     ) : (
       <>
-        <p className="cart-empty">is empty...</p>
+        <p className="cart-empty">no subscriptions... pls choose one</p>
         <button className="empty__button">
           <NavLink className="empty-button__text" to="/main/page">
             go to main page
@@ -128,17 +134,17 @@ class Profile extends Component {
     return (
       <div>
         <div className="Cart__container">
-          <h5 className="Cart__title">your cart</h5>
+          <h5 className="Cart__title">your subscription</h5>
           <div className="Cart">{addedItems}</div>
           <div className="Cart__footer">
-            <div className="Cart__total">
+            {/* <div className="Cart__total">
               <p className="total-price">total: {this.props.total}$</p>
-            </div>
-            <button className="Cart__checkout">
+            </div> */}
+            {/* <button className="Cart__checkout">
               <NavLink className="checkout__text" to="/main/orders">
                 checkout
               </NavLink>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
