@@ -23,7 +23,7 @@ class Login extends Component {
       .then(response => {
         this.props.authorize(email, response.data.token);
         if (this.props.authorize) {
-          this.props.history.push("/main/mycart");
+          this.props.history.push("/main/profile");
         }
       })
       .catch(error => {
@@ -131,9 +131,6 @@ class Login extends Component {
   }
 }
 
-export default connect(
-  null,
-  {
-    authorize
-  }
-)(Login);
+export default connect(null, {
+  authorize
+})(Login);

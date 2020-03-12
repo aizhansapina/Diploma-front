@@ -6,14 +6,15 @@ import logo_pink from "../../../images/kylie-logo-pink.png";
 import shop_black from "../../../images/maenu-lines-black.png";
 import search_black from "../../../images/search-black.png";
 import cart_black from "../../../images/shopping-bag-black.png";
+import profile from "../../../images/account.png";
 
-import "./Header.scss";
+import "./Header-shop.scss";
 
 export default function Header() {
   return (
     <div className="Header-shop">
       <nav className="Nav-left">
-        <NavLink exact className="Nav__link" to="/main/shop">
+        <NavLink exact className="Nav__link" to="/main/page">
           <img src={shop_black} alt={shop_black} className="Nav__img" />
         </NavLink>
         <NavLink className="Nav__link" to="/home">
@@ -26,7 +27,7 @@ export default function Header() {
       </NavLink>
       <div className="Nav-right">
         <NavLink className="Nav__account-black" to="/auth/login">
-          my account
+          sign in
           <div class="dropdown">
             <NavLink class="dropdown__item" to="/auth/register">
               Create account
@@ -36,8 +37,8 @@ export default function Header() {
             </NavLink>
           </div>
         </NavLink>
-        <NavLink exact className="Nav__link-right" to="/main/mycart">
-          <img src={cart_black} alt={cart_black} className="Nav__img" />
+        <NavLink exact className="Nav__link-right" to="/main/profile">
+          <img src={profile} alt={profile} className="Nav__img" />
         </NavLink>
       </div>
     </div>

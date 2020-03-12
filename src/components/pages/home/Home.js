@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../../../images/kylie-logo.png";
 import shop from "../../../images/menu-lines.png";
 import search from "../../../images/magnifying-glass.png";
-import cart from "../../../images/shopping-bag.png";
+import profile_white from "../../../images/account-white.png";
 
 import "./Home.scss";
 import "../../../components/shared/header/Header.scss";
@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <div className="Header">
         <nav className="Nav-left">
-          <NavLink exact className="Nav__link" to="/main/shop">
+          <NavLink exact className="Nav__link" to="/main/page">
             <img src={shop} alt={shop} className="Nav__img" />
           </NavLink>
           <NavLink className="Nav__link" to="">
@@ -27,7 +27,7 @@ export default function Home() {
         </NavLink>
         <div className="Nav-right">
           <NavLink className="Nav__account" to="auth/login">
-            my account
+            sign in
             <div className="dropdown">
               <NavLink className="dropdown__item" to="/auth/register">
                 Create account
@@ -37,8 +37,8 @@ export default function Home() {
               </NavLink>
             </div>
           </NavLink>
-          <NavLink exact className="Nav__link-right" to="/main/mycart">
-            <img src={cart} alt={cart} className="Nav__img" />
+          <NavLink exact className="Nav__link-right" to="/main/profile">
+            <img src={profile_white} alt={profile_white} className="Nav__img" />
           </NavLink>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="banner__content">
           <h1 className="banner__title">get your ielts course now</h1>
           <button className="banner__button">
-            <NavLink className="button__text" to="/main/shop">
+            <NavLink className="button__text" to="/main/page">
               go now
             </NavLink>
           </button>
