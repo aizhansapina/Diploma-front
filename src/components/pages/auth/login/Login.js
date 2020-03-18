@@ -1,136 +1,125 @@
 import React, { Component } from "react";
 
-import { Formik } from "formik";
 import Input from "../../../shared/input/Input";
 
 import { connect } from "react-redux";
-import { register } from "../../../../services/auth";
+import { withRouter } from 'react-router-dom';
+import { login } from "../../../../services/auth";
 import { authorize } from "../../../../store/actions/authActions";
+
+import { validateEmail } from '../services/validation';
 
 import "../../../shared/header/Header-shop.scss";
 
 import "../register/Register.scss";
 
 class Login extends Component {
-  state = {
-    formError: ""
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      errorFields: {},
+      fields: {
+        email: '',
+        password: '',
+      }
+    };
+  }
+
+  setFormField = e => {
+    const {
+      name,
+      value
+    } = e.target;
+    this.setState(prevState => ({
+      ...prevState,
+      fields: {
+        ...prevState.fields,
+        [name]: value,
+      },
+    }));
   };
 
-  handleSubmit = values => {
-    const { email, password } = values;
+  validate = () => {
+    const { fields } = this.state;
+    const errorFields = {};
 
-    register(email, password)
-      .then(response => {
-        this.props.authorize(email, response.data.token);
-        if (this.props.authorize) {
-          this.props.history.push("/main/profile");
-        }
-      })
-      .catch(error => {
-        if (error.response) {
-          this.setState({ formError: error.response.data.error });
-        } else {
-          this.setState({ formError: error.message });
-        }
-      });
+    if (!fields.email) {
+      errorFields.email = 'Email required';
+    } else if (!validateEmail(fields.email)) {
+      errorFields.email = 'Email not valid';
+    }
+
+    if (!fields.password) {
+      errorFields.password = 'Fill password';
+    }
+
+    if (errorFields.email || errorFields.password) {
+      this.setState({ errorFields });
+      return false;
+    }
+    return true;
   };
 
-  validateForm = values => {
-    const errors = {};
+  handleSubmit = e => {
+    e.preventDefault();
+      login(this.state.fields.email, this.state.fields.password)
+        .then(response => {
+          // sessionStorage.setItem('token', response.token);
+          this.props.history.push('/main/page');
+        })
+        .catch(console.error)
+  }
 
-    const emailRegExp = new RegExp(
-      [
-        '^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)',
-        '|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.',
-        "[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+",
-        "[a-zA-Z]{2,}))$"
-      ].join("")
-    );
-
-    if (!values.email) {
-      errors.email = "Email is required";
-    } else if (!emailRegExp.test(values.email)) {
-      errors.email = "Email must be valid";
-    }
-
-    if (!values.password) {
-      errors.password = "Password is required";
-    } else if (values.password.length <= 8) {
-      errors.password = "Password must be no shorter than 8 symbols";
-    }
-
-    if (!values.rePassword) {
-      errors.rePassword = "Re-enter your password";
-    } else if (values.password !== values.rePassword) {
-      errors.rePassword = "Passwords don't match";
-    }
-
-    return errors;
-  };
-  renderForm = ({
-    handleSubmit,
-    handleChange,
-    errors,
-    setFieldTouched,
-    touched
-  }) => (
-    <form onSubmit={handleSubmit} className="Register__form">
-      <div className="form__input">
-        <Input
-          name="email"
-          type="text"
-          // label="Email"
-          onBlur={() => setFieldTouched("email")}
-          error={errors.email}
-          touched={touched.email}
-          onChange={handleChange}
-          className="input"
-          placeholder="Email"
-        />
-        <span class="form__underline"></span>
-      </div>
-      <div className="form__input">
-        <Input
-          name="password"
-          type="password"
-          // label="Password"
-          onBlur={() => setFieldTouched("password")}
-          error={errors.password}
-          touched={touched.password}
-          onChange={handleChange}
-          placeholder="Password"
-        />
-        <span class="form__underline"></span>
-      </div>
-
-      {this.state.formError && (
-        <p className="text--error">{this.state.formError}</p>
-      )}
-      <button type="submit" className="form__button">
-        sign in
-      </button>
-    </form>
-  );
 
   render() {
+    const {
+      fields: {
+        email, password
+      },
+      errorFields: {
+        email: emailError, password: passwordError
+      }
+    } = this.state;
     return (
       <div className="Register">
         <h2 className="Register__title">login</h2>
-        <Formik
-          onSubmit={this.handleSubmit}
-          render={this.renderForm}
-          validate={this.validateForm}
-          initialValues={{
-            email: "",
-            password: "",
-            rePassword: ""
-          }}
-        />
+        <form onSubmit={this.handleSubmit} className="Register__form">
+          <div className="form__input">
+            <Input
+              name="email"
+              type="text"
+              onChange={this.setFormField}
+              className="input"
+              placeholder="Email"
+              autocomplete='off'
+              value={email}
+            />
+            <span className="form__underline">{emailError}</span>
+          </div>
+
+          <div className="form__input">
+            <Input
+                name="password"
+                type="password"
+                value={password}
+                onChange={this.setFormField}
+                className="input"
+                placeholder="Password"
+                autocomplete='off'
+            />
+            <span className="form__underline">{passwordError}</span>
+          </div>
+          <button type="submit" className="form__button">
+            sign in
+          </button>
+        </form>
       </div>
     );
   }
 }
 
-export default connect(null, {
+export default withRouter(connect(null, {
   authorize
-})(Login);
+})(Login));

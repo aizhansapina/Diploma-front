@@ -102,6 +102,16 @@
   font-size: 14px;
   letter-spacing: 3px;
   font-weight: 300;
+  cursor: pointer;
+
+  &:disabled {
+    background: darkgray;
+    cursor: default;
+  }
+}
+
+.to-cart:disabled:hover {
+  background: darkgray;
 }
 
 .to-cart:hover {

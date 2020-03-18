@@ -18,5 +18,6 @@ export function register(email, password) {
 }
 
 export function login(email, password) {
-  return api.post("/auth/login", { email, password });
+  return Promise.resolve()
+  // return api.post("/auth/login", { email, password });
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addToCart } from "../../../store/actions/cartActions";
 
@@ -7,11 +7,31 @@ import "../../shared/header/Header-shop.scss";
 import "./Main.scss";
 
 class Main extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    const token = sessionStorage.getItem('token');
+
+    this.setState({
+      isLoggedIn: Boolean(!token)
+    });
+  }
+
   handleClick = id => {
     this.props.addToCart(id);
   };
 
+  onRegisterClick = () => this.props.history.push('/auth/register')
+
   render() {
+    const { isLoggedIn } = this.state;
     let itemList = this.props.items.map(item => {
       return (
         <div className="Product__column" key={item.id}>
@@ -31,6 +51,7 @@ class Main extends Component {
               onClick={() => {
                 this.handleClick(item.id);
               }}
+              disabled={!isLoggedIn}
             >
               get now
             </button>
@@ -39,16 +60,19 @@ class Main extends Component {
       );
     });
 
+
     return (
       <div>
         <div>
           <h1 className="Register-button__title">Do you want a demo lesson?</h1>
-          <button className="Product__button">
-            {/* <span className="button__text">register first</span> */}
-            <NavLink className="button__text" to="/auth/register">
-              Register first
-            </NavLink>
-          </button>
+          {!isLoggedIn && (
+              <button onClick={this.onRegisterClick} className="Product__button">
+                {/* <span className="button__text">register first</span> */}
+                <NavLink className="button__text" to="/auth/register">
+                  Register first
+                </NavLink>
+              </button>
+          )}
         </div>
         <div className="Product__row">{itemList}</div>
       </div>
@@ -70,4 +94,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
