@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300|Poiret+One|Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Poiret+One|Raleway&display=swap");
+
+
+.Submenu_layout {
+    width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sudmenu_link {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    // font-family: "Josefin Sans", sans-serif;
+}
+
+.sudmenu_link:hover {
+    color: #ffb842;
+    transition: 0.3s;
+}

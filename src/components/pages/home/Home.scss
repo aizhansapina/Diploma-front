@@ -3,7 +3,7 @@
 
 .banner {
   //background-image: url("../../../images/kylie-skin-banner.jpeg");
-  height: 100vh;
+  // height: 100vh;
   background-position: center;
   text-align: center;
 }
@@ -46,6 +46,11 @@
 .button__text {
   text-decoration: none;
   color: #fff;
+}
+
+.submenu {
+  width: 1000px;
+  margin: 50px auto;
 }
 
 @media (min-width: 1920px) {

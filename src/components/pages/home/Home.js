@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Submenu from '../../layouts/submenu-layout/SubmenuLayout';
 
 import logo from "../../../images/kylie-logo.png";
 import shop from "../../../images/menu-lines.png";
@@ -51,6 +52,9 @@ export default function Home() {
             </NavLink>
           </button>
         </div>
+      </div>
+      <div className='submenu'>
+        <Submenu />
       </div>
     </div>
   );
