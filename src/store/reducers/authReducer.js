@@ -15,5 +15,8 @@ export default function(state = initialState, action) {
         ...state,
         email: action.payload
       };
+
+    default:
+      return state;
   }
 }

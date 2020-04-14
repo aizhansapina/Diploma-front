@@ -11,7 +11,8 @@ export default function Input({
   placeholder,
   value,
   touched,
-  error
+  error,
+  autocomplete,
 }) {
   return (
     <div className="input__wrapper">
@@ -29,6 +30,7 @@ export default function Input({
         onBlur={onBlur}
         placeholder={placeholder}
         value={value}
+        autoComplete={autocomplete}
       />
       {touched && error && <p className="input__error">{error}</p>}
     </div>
