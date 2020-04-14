@@ -1,46 +1,202 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import Header from "../../shared/header/Header";
-import Submenu from '../../layouts/submenu-layout/SubmenuLayout';
-import './SandW.scss';
+import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
+import "./SandW.scss";
 
 const SandW = (props) => {
-    return (
-        <Fragment>
-            <Header />
-            <Submenu />
-            <div className='Writing'>
-                <div className='container'>
-                    <div className='student_data'>
-                        <h1 className='student_name'>{props.name}</h1>
-                        <div className='course_data'>
-                            <p className='day'>{props.days}</p>
-                            <p className='next_lesson'>{props.lesson}</p>
-                            <h2 className='module'>{props.module}</h2>
-                        </div>
-                    </div>
-                    <h1 className='title'>
-                        Speaking&Writing Modul # Lesson #
-                    </h1>
-                    <div className='lang'>
-                        <button className='lang_rus language'>Rus</button>
-                        <button className='lang_eng language'>Eng</button>
-                    </div>
-                    <div className='main_content'>
-                        <div className='introduction_text'>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a 
-                            type specimen book. It has survived not only five centuries, but also the 
-                            leap into electronic typesetting, remaining essentially unchanged. 
-                            It was popularised in the 1960s with the release of Letraset sheets 
-                            containing Lorem Ipsum passages, and more recently with desktop 
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </div>
-                    </div>
-                </div>
+  return (
+    <Fragment>
+      <Header />
+      <Submenu />
+      <div className="Writing">
+        <div className="container">
+          <div className="student_data">
+            <h1 className="student_name">{props.name}</h1>
+            <div className="course_data">
+              <p className="day">{props.days}</p>
+              <p className="next_lesson">{props.lesson}</p>
+              <h2 className="module">{props.module}</h2>
             </div>
-        </Fragment>
-    )
+          </div>
+          <h1 className="title">Speaking&Writing Modul # Lesson #</h1>
+          <div className="feedback_section">
+            <button className="feedback">Speaking</button>
+            <button className="feedback">Writing</button>
+          </div>
+          <div className="main_content">
+            <h3 classname="introduction_title">Recommendations</h3>
+            <div>
+              <p className="introduction_text">
+                Student should send a recording after completing at least ten
+                lessons.{" "}
+              </p>
+              <p className="introduction_text">
+                Remember that you have to record all 3 parts of Speaking and:
+              </p>
+              <p className="introduction_text"> - use paragraphing</p>
+              <p className="introduction_text">
+                - speak at least 2 min, but do not exceed 3 min in Speaking Part
+                2
+              </p>
+              <p className="introduction_text">
+                - use synonyms (try to not repeat the same words)
+              </p>
+              <p className="introduction_text">
+                - use different grammatical structures
+              </p>
+            </div>
+            <div className="content">
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">1)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">2)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">3)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">4)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">5)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">6)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">7)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">8)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">9)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_feedback">
+                <span className="feedback_lesson-id">10)</span>
+                <button className="feedback_select-button">Select file</button>
+                <span className="feedback_selected-doc">
+                  file *.doc selected
+                </span>
+                <button className="feedback_select-button">Select audio</button>
+                <button className="feedback_select-button">
+                  Send to teacher
+                </button>
+                <button className="feedback_select-button">Download</button>
+                <button className="feedback_select-button">See result</button>
+              </div>
+              <div className="content_result">
+                <p>Your approximate results</p>
+                <div className="result_section">
+                  <span classname="result_section-title">F/C</span>
+                  <span classname="result_section-title">Gr/A</span>
+                  <span classname="result_section-title">L/R</span>
+                  <span classname="result_section-title">Pr</span>
+                </div>
+                <div className="result_grades">
+                  <span>0.0</span>
+                  <span>0.0</span>
+                  <span>0.0</span>
+                  <span>0.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 
 export default SandW;

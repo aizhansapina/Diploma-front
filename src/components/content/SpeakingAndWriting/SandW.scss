@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Poiret+One|Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300|Poiret+One|Raleway&display=swap");
+
+.title {
+  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+}
+.feedback {
+  width: 160px;
+  height: 30px;
+  background-color: #ffb842;
+  text-transform: uppercase;
+  border: none;
+  font-size: 14px;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.main_content {
+  margin-top: 40px;
+}
+
+.introduction_title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.introduction_text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 0 0 0;
+}
+
+.content {
+  margin-top: 40px;
+}
+
+.content_feedback {
+  padding: 30px 0;
+}
+
+.feedback_lesson-id {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.feedback_select-button {
+  width: 140px;
+  height: 34px;
+  background-color: #fff;
+  text-transform: uppercase;
+  //   border-width: 2px;
+  //   border-color: #ffb842;
+  border: 1px solid #ffb842;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.feedback_select-button:hover {
+  background-color: #ffb842;
+}
+
+.feedback_selected-doc {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.result_section {
+  margin: 20px 0;
+}
+
+.result_grades {
+  justify-content: space-around;
+}
