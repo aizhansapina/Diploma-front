@@ -10,14 +10,22 @@ import "../../../shared/header/Header-shop.scss";
 import "./Register.scss";
 
 class Register extends Component {
-  state = {
-    formError: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      password_confirmation: "",
+      registrationError: "",
+      formError: ""
+    };
+  }
 
   handleSubmit = values => {
     const { email, password } = values;
 
     register(email, password)
+    // console.log("registedered")
       .then(response => {
         this.props.authorize(email, response.data.token);
         if (this.props.authorize) {

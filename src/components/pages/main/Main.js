@@ -12,7 +12,8 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      subscriptions: []
     }
   }
 
@@ -22,6 +23,15 @@ class Main extends Component {
     this.setState({
       isLoggedIn: Boolean(!token)
     });
+
+    const url = "http://104.248.114.51/subscriptions/get_subscriptions/";
+    fetch(url)
+    .then( results => {
+      return results.json();
+    }).then(data => {
+      this.setState({subscriptions: data})
+      console.log(this.state.subscriptions)
+    })
   }
 
   handleClick = id => {
@@ -31,17 +41,17 @@ class Main extends Component {
   onRegisterClick = () => this.props.history.push('/auth/register')
 
   render() {
-    const { isLoggedIn } = this.state;
-    let itemList = this.props.items.map(item => {
+    const { isLoggedIn, subscriptions } = this.state;
+    let itemList = subscriptions.map(item => {
       return (
         <div className="Product__column" key={item.id}>
           {/* <img src={item.img} alt={item.title} className="Product__img" /> */}
           <div className="Product__img">
-            <span className="Product__name">{item.title}</span>
-            <p className="Product__list">- Lorem Inpsum</p>
-            <p className="Product__list">- Lorem Inpsum</p>
-            <p className="Product__list">- Lorem Inpsum</p>
-            <p className="Product__list">- Lorem Inpsum</p>
+            <span className="Product__name">{item.name}</span>
+            <p className="Product__list">{item.description_short}</p>
+            <p className="Product__list">{item.description_full}</p>
+            <p className="Product__list">Discount: {item.discount}</p>
+            <p className="Product__list">Days: {item.days}</p>
           </div>
           <div className="Product__description">
             <p className="Product__title">{item.title}</p>
