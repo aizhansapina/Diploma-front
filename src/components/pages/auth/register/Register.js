@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Formik } from "formik";
 import Input from "../../../shared/input/Input";
 
 import { connect } from "react-redux";
@@ -12,34 +11,18 @@ import "./Register.scss";
 class Register extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      email: "",
-      password: "",
-      password_confirmation: "",
-      registrationError: "",
-      formError: ""
+      errorFields: {},
+      fields: {
+        full_name: '',
+        lastName: '',
+        email: '',
+        password1: '',
+        rePassword: '',
+      }
     };
   }
-
-  handleSubmit = values => {
-    const { email, password } = values;
-
-    register(email, password)
-    // console.log("registedered")
-      .then(response => {
-        this.props.authorize(email, response.data.token);
-        if (this.props.authorize) {
-          this.props.history.push("/main/profile");
-        }
-      })
-      .catch(error => {
-        if (error.response) {
-          this.setState({ formError: error.response.data.error });
-        } else {
-          this.setState({ formError: error.message });
-        }
-      });
-  };
 
   validateForm = values => {
     const errors = {};
@@ -74,22 +57,52 @@ class Register extends Component {
     return errors;
   };
 
-  renderForm = ({
-    handleSubmit,
-    handleChange,
-    errors,
-    setFieldTouched,
-    touched
-  }) => (
-    <form onSubmit={handleSubmit} className="Register__form">
+  handleSubmit = e => {
+    console.log(this.state)
+    e.preventDefault();
+      register(this.state.fields.email, this.state.fields.password1, this.state.fields.full_name)
+        .then(response => {
+          console.log(response)
+          this.props.history.push('/main/profile');
+        })
+        .catch(console.error)
+  }
+
+  setFormField = e => {
+    const {
+      name,
+      value
+    } = e.target;
+    this.setState(prevState => ({
+      ...prevState,
+      fields: {
+        ...prevState.fields,
+        [name]: value,
+      },
+    }));
+  };
+
+  render() {
+    const {
+      fields: {
+        email, password1, rePassword, full_name, lastName
+      },
+      errorFields: {
+        email: emailError, password: passwordError
+      }
+    } = this.state;
+    return (
+      <div className="Register">
+        <h2 className="Register__title">Create account</h2>
+        <form onSubmit={this.handleSubmit} className="Register__form">
       <div className="form__input">
         <Input
-          name="firstName"
+          name="full_name"
           type="text"
-          // label="Email"
-          onChange={handleChange}
+          onChange={this.setFormField}
           className="input"
           placeholder="First Name"
+          value={full_name}
         />
         <span class="form__underline"></span>
       </div>
@@ -97,10 +110,10 @@ class Register extends Component {
         <Input
           name="lastName"
           type="text"
-          // label="Email"
           className="input"
-          onChange={handleChange}
+          onChange={this.setFormField}
           placeholder="Last Name"
+          value={lastName}
         />
         <span class="form__underline"></span>
       </div>
@@ -108,26 +121,20 @@ class Register extends Component {
         <Input
           name="email"
           type="text"
-          // label="Email"
-          onBlur={() => setFieldTouched("email")}
-          error={errors.email}
-          touched={touched.email}
-          onChange={handleChange}
+          onChange={this.setFormField}
           className="input"
           placeholder="Email"
+          value={email}
         />
         <span class="form__underline"></span>
       </div>
       <div className="form__input">
         <Input
-          name="password"
+          name="password1"
           type="password"
-          // label="Password"
-          onBlur={() => setFieldTouched("password")}
-          error={errors.password}
-          touched={touched.password}
-          onChange={handleChange}
+          onChange={this.setFormField}
           placeholder="Password"
+          value={password1}
         />
         <span class="form__underline"></span>
       </div>
@@ -135,12 +142,9 @@ class Register extends Component {
         <Input
           name="rePassword"
           type="password"
-          // label="Repeat password"
-          onBlur={() => setFieldTouched("rePassword")}
-          error={errors.rePassword}
-          touched={touched.rePassword}
-          onChange={handleChange}
+          onChange={this.setFormField}
           placeholder="Repeat password"
+          value={rePassword}
         />
         <span class="form__underline"></span>
       </div>
@@ -151,22 +155,6 @@ class Register extends Component {
         create
       </button>
     </form>
-  );
-
-  render() {
-    return (
-      <div className="Register">
-        <h2 className="Register__title">Create account</h2>
-        <Formik
-          onSubmit={this.handleSubmit}
-          render={this.renderForm}
-          validate={this.validateForm}
-          initialValues={{
-            email: "",
-            password: "",
-            rePassword: ""
-          }}
-        />
       </div>
     );
   }

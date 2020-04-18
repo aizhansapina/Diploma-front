@@ -13,8 +13,8 @@ if (localStorage.getItem("access_token")) {
   )}`;
 }
 
-export function register(email, password) {
-  return api.post("/auth/register", { email, password });
+export function register(email, password1, full_name) {
+  return api.post("/auth/register", { email, password1, full_name });
 }
 
 export function login(email, password) {
