@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/home/static/css/main.669732bd.chunk.css",
+    "main.js": "/home/static/js/main.c367875d.chunk.js",
+    "main.js.map": "/home/static/js/main.c367875d.chunk.js.map",
+    "runtime-main.js": "/home/static/js/runtime-main.54cb81bf.js",
+    "runtime-main.js.map": "/home/static/js/runtime-main.54cb81bf.js.map",
+    "static/js/2.f2426ad5.chunk.js": "/home/static/js/2.f2426ad5.chunk.js",
+    "static/js/2.f2426ad5.chunk.js.map": "/home/static/js/2.f2426ad5.chunk.js.map",
+    "index.html": "/home/index.html",
+    "precache-manifest.d71c5c7cc07ffa6a92203c795883a956.js": "/home/precache-manifest.d71c5c7cc07ffa6a92203c795883a956.js",
+    "service-worker.js": "/home/service-worker.js",
+    "static/css/main.669732bd.chunk.css.map": "/home/static/css/main.669732bd.chunk.css.map",
+    "static/js/2.f2426ad5.chunk.js.LICENSE.txt": "/home/static/js/2.f2426ad5.chunk.js.LICENSE.txt",
+    "static/media/kylie-logo-pink.png": "/home/static/media/kylie-logo-pink.8105c9ff.png",
+    "static/media/Home.scss": "/home/static/media/mobile.f232efa3.jpg",
+    "static/media/set-top.jpg": "/home/static/media/set-top.83f6e129.jpg",
+    "static/media/sunscreen-top.jpg": "/home/static/media/sunscreen-top.517e8681.jpg",
+    "static/media/wipes-top.jpg": "/home/static/media/wipes-top.c88d9f7a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54cb81bf.js",
+    "static/js/2.f2426ad5.chunk.js",
+    "static/css/main.669732bd.chunk.css",
+    "static/js/main.c367875d.chunk.js"
+  ]
+}
