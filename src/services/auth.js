@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'http://104.248.114.51',
+  baseURL: 'http://198.199.121.47',
   headers: {
     "Content-Type": "application/json"
   }
@@ -18,6 +18,6 @@ export function register(email, password1, full_name) {
 }
 
 export function login(email, password) {
-  return Promise.resolve()
-  // return api.post("/auth/login", { email, password });
+  // return Promise.resolve()
+  return api.post("/auth/users/login", { email, password });
 }

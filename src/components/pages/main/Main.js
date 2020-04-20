@@ -24,7 +24,7 @@ class Main extends Component {
       isLoggedIn: Boolean(!token)
     });
 
-    const url = "http://104.248.114.51/subscriptions/get_subscriptions/";
+    const url = "http://198.199.121.47/subscriptions/get_subscriptions/";
     fetch(url)
     .then( results => {
       return results.json();
