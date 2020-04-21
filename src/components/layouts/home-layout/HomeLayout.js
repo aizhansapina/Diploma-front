@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
 import Home from "../../pages/home/Home";
+import Moduls from "../../moduls/Moduls";
 
 export default class HomeLayout extends Component {
   render() {

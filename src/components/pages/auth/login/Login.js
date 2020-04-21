@@ -3,36 +3,32 @@ import React, { Component } from "react";
 import Input from "../../../shared/input/Input";
 
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import { login } from "../../../../services/auth";
 import { authorize } from "../../../../store/actions/authActions";
 
-import { validateEmail } from '../services/validation';
+import { validateEmail } from "../services/validation";
 
 import "../../../shared/header/Header-shop.scss";
 
 import "../register/Register.scss";
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       errorFields: {},
       fields: {
-        email: '',
-        password: '',
-      }
+        email: "",
+        password: "",
+      },
     };
   }
 
-  setFormField = e => {
-    const {
-      name,
-      value
-    } = e.target;
-    this.setState(prevState => ({
+  setFormField = (e) => {
+    const { name, value } = e.target;
+    this.setState((prevState) => ({
       ...prevState,
       fields: {
         ...prevState.fields,
@@ -46,13 +42,13 @@ class Login extends Component {
     const errorFields = {};
 
     if (!fields.email) {
-      errorFields.email = 'Email required';
+      errorFields.email = "Email required";
     } else if (!validateEmail(fields.email)) {
-      errorFields.email = 'Email not valid';
+      errorFields.email = "Email not valid";
     }
 
     if (!fields.password) {
-      errorFields.password = 'Fill password';
+      errorFields.password = "Fill password";
     }
 
     if (errorFields.email || errorFields.password) {
@@ -62,25 +58,20 @@ class Login extends Component {
     return true;
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-      login(this.state.fields.email, this.state.fields.password)
-        .then(response => {
-          // sessionStorage.setItem('token', response.token);
-          this.props.history.push('/main/page');
-        })
-        .catch(console.error)
-  }
-
+    login(this.state.fields.email, this.state.fields.password)
+      .then((response) => {
+        // sessionStorage.setItem('token', response.token);
+        this.props.history.push("/subscriptions/get_subscriptions/");
+      })
+      .catch(console.error);
+  };
 
   render() {
     const {
-      fields: {
-        email, password
-      },
-      errorFields: {
-        email: emailError, password: passwordError
-      }
+      fields: { email, password },
+      errorFields: { email: emailError, password: passwordError },
     } = this.state;
     return (
       <div className="Register">
@@ -93,7 +84,7 @@ class Login extends Component {
               onChange={this.setFormField}
               className="input"
               placeholder="Email"
-              autocomplete='off'
+              autocomplete="off"
               value={email}
             />
             <span className="form__underline">{emailError}</span>
@@ -101,13 +92,13 @@ class Login extends Component {
 
           <div className="form__input">
             <Input
-                name="password"
-                type="password"
-                value={password}
-                onChange={this.setFormField}
-                className="input"
-                placeholder="Password"
-                autocomplete='off'
+              name="password"
+              type="password"
+              value={password}
+              onChange={this.setFormField}
+              className="input"
+              placeholder="Password"
+              autocomplete="off"
             />
             <span className="form__underline">{passwordError}</span>
           </div>
@@ -120,6 +111,8 @@ class Login extends Component {
   }
 }
 
-export default withRouter(connect(null, {
-  authorize
-})(Login));
+export default withRouter(
+  connect(null, {
+    authorize,
+  })(Login)
+);

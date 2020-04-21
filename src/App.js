@@ -4,13 +4,14 @@ import { Route, Switch } from "react-router-dom";
 import HomeLayout from "./components/layouts/home-layout/HomeLayout";
 import MainLayout from "./components/layouts/main-layout/MainLayout";
 import AuthLayout from "./components/layouts/auth-layout/AuthLayout";
-import Listening from './components/content/Listening/Listening';
-import Reading from './components/content/Reading/Reading';
-import Writing from './components/content/Writing/Writing';
-import Speaking from './components/content/Speaking/Speaking';
-import SandW from './components/content/SpeakingAndWriting/SandW';
-import Grammar from './components/content/Grammar/Grammar';
-import Video from './components/content/Video/Video';
+import Listening from "./components/content/Listening/Listening";
+import Reading from "./components/content/Reading/Reading";
+import Writing from "./components/content/Writing/Writing";
+import Speaking from "./components/content/Speaking/Speaking";
+import SandW from "./components/content/SpeakingAndWriting/SandW";
+import Grammar from "./components/content/Grammar/Grammar";
+import Video from "./components/content/Video/Video";
+import Moduls from "./components/moduls/Moduls";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/speaking-writing" component={SandW} />
         <Route path="/grammar" component={Grammar} />
         <Route path="/video" component={Video} />
+        <Route path="/module_lessons/get_modules/" component={Moduls} />
       </Switch>
     </>
   );

@@ -5,31 +5,27 @@ import { NavLink } from "react-router-dom";
 import {
   removeItem,
   addQuantity,
-  subtractQuantity
+  subtractQuantity,
 } from "../../../store/actions/cartActions";
-
-import delet from "../../../images/delete.png";
-import up_arrow from "../../../images/up-arrow.png";
-import down_arrow from "../../../images/down-arrow.png";
 
 import "./Profile.scss";
 
 class Profile extends Component {
-  handleRemove = id => {
+  handleRemove = (id) => {
     this.props.removeItem(id);
   };
 
-  handleAddQuantity = id => {
+  handleAddQuantity = (id) => {
     this.props.addQuantity(id);
   };
 
-  handleSubtractQuantity = id => {
+  handleSubtractQuantity = (id) => {
     this.props.subtractQuantity(id);
   };
 
   render() {
     let addedItems = this.props.items.length ? (
-      this.props.items.map(item => {
+      this.props.items.map((item) => {
         return (
           <>
             <table className="Cart__items" key={item.id}>
@@ -46,11 +42,6 @@ class Profile extends Component {
               <tbody>
                 <tr className="Cart__row">
                   <td className="row-image">
-                    {/* <img
-                      src={item.img}
-                      alt={item.img}
-                      className="product__image"
-                    /> */}
                     <p className="product__name">{item.title}</p>
                   </td>
                   <td className="row-name">
@@ -125,7 +116,10 @@ class Profile extends Component {
       <>
         <p className="cart-empty">no subscriptions... pls choose one</p>
         <button className="empty__button">
-          <NavLink className="empty-button__text" to="/main/page">
+          <NavLink
+            className="empty-button__text"
+            to="/subscriptions/get_subscriptions/"
+          >
             go to main page
           </NavLink>
         </button>
@@ -135,6 +129,14 @@ class Profile extends Component {
       <div>
         <div className="Cart__container">
           <h5 className="Cart__title">your subscription</h5>
+          <button className="empty__button">
+            <NavLink
+              className="empty-button__text"
+              to="/module_lessons/get_modules"
+            >
+              start studying
+            </NavLink>
+          </button>
           <div className="Cart">{addedItems}</div>
           <div className="Cart__footer">
             {/* <div className="Cart__total">
@@ -152,25 +154,25 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     items: state.addedItems,
     addedItems: state.addedItems,
-    total: state.total
+    total: state.total,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    removeItem: id => {
+    removeItem: (id) => {
       dispatch(removeItem(id));
     },
-    addQuantity: id => {
+    addQuantity: (id) => {
       dispatch(addQuantity(id));
     },
-    subtractQuantity: id => {
+    subtractQuantity: (id) => {
       dispatch(subtractQuantity(id));
-    }
+    },
   };
 };
 

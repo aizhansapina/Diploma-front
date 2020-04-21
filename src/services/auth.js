@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'http://198.199.121.47',
+  baseURL: "http://104.248.114.51",
   headers: {
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 
 if (localStorage.getItem("access_token")) {
@@ -14,7 +14,7 @@ if (localStorage.getItem("access_token")) {
 }
 
 export function register(email, password1, full_name) {
-  return api.post("/auth/register", { email, password1, full_name });
+  return api.post("/auth/register/", { email, password1, full_name });
 }
 
 export function login(email, password) {

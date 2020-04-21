@@ -1,44 +1,45 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import logo_pink from "../../../images/kylie-logo-pink.png";
-//import ielts_logo from "../../../images/ielts_logo";
-import shop_black from "../../../images/maenu-lines-black.png";
-import search_black from "../../../images/search-black.png";
-import cart_black from "../../../images/shopping-bag-black.png";
-import profile from "../../../images/account.png";
+import shop from "../../../images/menu-lines.png";
+import search from "../../../images/magnifying-glass.png";
+import profile_white from "../../../images/account-white.png";
 
-import "./Header-shop.scss";
+import "./Header.scss";
 
 export default function Header() {
   return (
-    <div className="Header-shop">
+    <div className="Header">
       <nav className="Nav-left">
-        <NavLink exact className="Nav__link" to="/main/page">
-          <img src={shop_black} alt={shop_black} className="Nav__img" />
+        <NavLink
+          exact
+          className="Nav__link"
+          to="/subscriptions/get_subscriptions/"
+        >
+          <img src={shop} alt={shop} className="Nav__img" />
         </NavLink>
-        <NavLink className="Nav__link" to="/home">
-          <img src={search_black} alt={search_black} className="Nav__img" />
+        <NavLink className="Nav__link" to="">
+          <img src={search} alt={search} className="Nav__img" />
         </NavLink>
       </nav>
       <NavLink className="Header__logo" to="/home">
-        {/* <img src={ielts_logo} alt={ielts_logo} className="logo" /> */}
+        {/* <img src={logo} alt={logo} className="logo" /> */}
         <span className="Header__title">IELTS ACADEMY</span>
       </NavLink>
       <div className="Nav-right">
-        <NavLink className="Nav__account-black" to="/auth/login">
+        <NavLink className="Nav__account" to="/auth/users/login/">
           sign in
-          <div class="dropdown">
-            <NavLink class="dropdown__item" to="/auth/register">
+          <div className="dropdown">
+            <NavLink className="dropdown__item" to="/auth/register/">
               Create account
             </NavLink>
-            <NavLink class="dropdown__item" to="/auth/login">
+            <NavLink className="dropdown__item" to="/auth/users/login/">
               Login
             </NavLink>
           </div>
         </NavLink>
         <NavLink exact className="Nav__link-right" to="/main/profile">
-          <img src={profile} alt={profile} className="Nav__img" />
+          <img src={profile_white} alt={profile_white} className="Nav__img" />
         </NavLink>
       </div>
     </div>
