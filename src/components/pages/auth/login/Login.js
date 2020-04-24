@@ -66,7 +66,7 @@ class Login extends Component {
         console.log("AIZHAAAN", response.data.token)
         sessionStorage.setItem('token', response.data.token);
         console.log("HEY BOY", sessionStorage.getItem('token'))
-        this.props.history.push("/main/subscriptions/get_subscriptions/");
+        this.props.history.push("/main/profile");
       })
       .catch(console.error);
   };

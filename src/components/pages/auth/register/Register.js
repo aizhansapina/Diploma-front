@@ -63,7 +63,7 @@ class Register extends Component {
       register(this.state.fields.email, this.state.fields.password1, this.state.fields.full_name)
         .then(response => {
           console.log(response)
-          this.props.history.push('/main/profile');
+          this.props.history.push('/auth/notification');
         })
         .catch(console.error)
   }

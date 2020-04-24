@@ -5,6 +5,7 @@ import Login from "../../pages/auth/login/Login";
 import Register from "../../pages/auth/register/Register";
 import Header from "../../shared/header/Header";
 import { ActivationPage } from "../../pages/auth/ActivationPage";
+import { NotificationPage } from "../../pages/auth/notification/NotificationPage";
 
 export default class AuthLayout extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class AuthLayout extends Component {
         <Switch>
           <Route exact path="/auth/register/" component={Register} />
           <Route exact path="/auth/users/login/" component={Login} />
-          {/* <Route exact path="/auth/activations/activate/:uuid" component={ActivationPage} /> */}
+          <Route exact path="/auth/notification/" component={NotificationPage} />
           <Route exact path="/auth/activations/activate/:uuid">
             <ActivationPage />
           </Route>
