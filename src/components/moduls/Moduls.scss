@@ -22,6 +22,11 @@ h3 {
   font-size: 22px;
 }
 
+.modul {
+  margin-top: 80px;
+  text-align: center;
+}
+
 .moduls__list {
   margin-top: 80px;
   text-align: center;
@@ -47,12 +52,20 @@ h3 {
 .lesson_button {
   display: block;
   margin: 30px auto;
-  height: 40px;
+  height: 90px;
   width: 300px;
   background-color: #fff;
   border: 1px solid rgb(255, 177, 31);
   color: #000;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 400;
   text-transform: uppercase;
+  padding: 8px 0;
+}
+
+.lesson_button__text {
+  font-size: 14px;
+  text-transform: initial;
+  font-weight: 300;
 }
