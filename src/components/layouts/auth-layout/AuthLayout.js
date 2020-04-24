@@ -15,7 +15,7 @@ export default class AuthLayout extends Component {
           <Route exact path="/auth/register/" component={Register} />
           <Route exact path="/auth/users/login/" component={Login} />
           {/* <Route exact path="/auth/activations/activate/:uuid" component={ActivationPage} /> */}
-          <Route path="/auth/activations/activate/:uuid">
+          <Route exact path="/auth/activations/activate/:uuid">
             <ActivationPage />
           </Route>
         </Switch>

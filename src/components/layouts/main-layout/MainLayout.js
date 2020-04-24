@@ -13,11 +13,7 @@ export default class MainLayout extends Component {
       <div>
         <Header />
         <Switch>
-          <Route
-            exact
-            path="/subscriptions/get_subscriptions/"
-            component={Main}
-          />
+          <Route exact path="/main/subscriptions/get_subscriptions/" component={Main} />
           <Route exact path="/main/profile" component={Profile}></Route>
           <Route exact path="/module_lessons/get_modules/" component={Moduls} />
         </Switch>

@@ -63,7 +63,7 @@ class Login extends Component {
     login(this.state.fields.email, this.state.fields.password)
       .then((response) => {
         // sessionStorage.setItem('token', response.token);
-        this.props.history.push("/subscriptions/get_subscriptions/");
+        this.props.history.push("/main/subscriptions/get_subscriptions/");
       })
       .catch(console.error);
   };

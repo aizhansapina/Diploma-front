@@ -14,7 +14,7 @@ export default function Header() {
         <NavLink
           exact
           className="Nav__link"
-          to="/subscriptions/get_subscriptions/"
+          to="/main/subscriptions/get_subscriptions/"
         >
           <img src={shop} alt={shop} className="Nav__img" />
         </NavLink>

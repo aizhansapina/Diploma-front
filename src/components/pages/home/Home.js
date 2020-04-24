@@ -17,7 +17,7 @@ export default function Home() {
           <NavLink
             exact
             className="Nav__link"
-            to="/subscriptions/get_subscriptions/"
+            to="/main/subscriptions/get_subscriptions/"
           >
             <img src={shop} alt={shop} className="Nav__img" />
           </NavLink>
@@ -52,7 +52,7 @@ export default function Home() {
           <button className="banner__button">
             <NavLink
               className="button__text"
-              to="/subscriptions/get_subscriptions/"
+              to="/main/subscriptions/get_subscriptions/"
             >
               go now
             </NavLink>

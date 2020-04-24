@@ -23,7 +23,7 @@ class Main extends Component {
       isLoggedIn: Boolean(!token),
     });
 
-    const url = "http://104.248.114.51/subscriptions/get_subscriptions/";
+    const url = "http://104.248.114.51:8000/subscriptions/get_subscriptions/";
     fetch(url)
       .then((results) => {
         return results.json();
@@ -41,6 +41,7 @@ class Main extends Component {
   onRegisterClick = () => this.props.history.push("/auth/register/");
 
   render() {
+    console.log("wtf")
     const { isLoggedIn, subscriptions } = this.state;
     let itemList = subscriptions.map((item) => {
       return (

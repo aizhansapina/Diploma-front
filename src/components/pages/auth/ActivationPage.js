@@ -7,9 +7,9 @@ export const ActivationPage = (props) => {
 
   useEffect(() => {
     if (uuid) {
-      fetch(`http://104.248.114.51/auth/activations/activate/${uuid}`).then(
+      fetch(`http://104.248.114.51:8000/auth/activations/activate/${uuid}`).then(
         () => {
-          history.push("/login-page");
+          history.push("/auth/users/login/");
         }
       );
     }
