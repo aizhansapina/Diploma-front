@@ -3,27 +3,27 @@ import axios from "axios";
 import Header from "../shared/header/Header.js";
 
 import "../../components/shared/header/Header.scss";
-import "./Moduls.scss";
+import "./UserSubscription.scss";
 
-const ActivatedTime = ({ activated_time }) => {
-  if (!activated_time) {
-    return <p className="lesson_button__text--red">Press To Activate</p>;
-  }
-  return (
-    <p className="lesson_button__text">Activated Time: {activated_time}</p>
-  );
-};
+// const ActivatedTime = ({ activated_time }) => {
+//   if (!activated_time) {
+//     return <p className="lesson_button__text--red">Press To Activate</p>;
+//   }
+//   return (
+//     <p className="lesson_button__text">Activated Time: {activated_time}</p>
+//   );
+// };
 
-const PreviousLessons = ({ previous_lesson }) => {
-  if (!previous_lesson) {
-    return <p className="lesson_button__text">No Previous Lessons</p>;
-  }
-  return (
-    <p className="lesson_button__text">Previous Lessons: {previous_lesson}</p>
-  );
-};
+// const PreviousLessons = ({ previous_lesson }) => {
+//   if (!previous_lesson) {
+//     return <p className="lesson_button__text">No Previous Lessons</p>;
+//   }
+//   return (
+//     <p className="lesson_button__text">Previous Lessons: {previous_lesson}</p>
+//   );
+// };
 
-class Moduls extends Component {
+class UserSubscription extends Component {
   constructor(props) {
     super(props);
     this.state = { moduls: [] };
@@ -93,4 +93,4 @@ class Moduls extends Component {
     );
   }
 }
-export default Moduls;
+export default UserSubscription;
