@@ -36,8 +36,24 @@ class Main extends Component {
       });
   }
 
-  handleClick = (id) => {
-    this.props.addToCart(id);
+  handleClick = (id, paid_amount) => {
+    console.log("POMOGIIITE", id)
+    fetch("http://104.248.114.51:8000/subscriptions/"+ id +"/add_user_subscription/", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json', 
+        'Authorization': 'JWT '+ sessionStorage.getItem("token")
+      },
+      method: "POST",
+      body: JSON.stringify({"paid_amount": paid_amount})
+    })
+    .then((response) => response.text())
+    .then((responseText) => {
+      alert(responseText);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   onRegisterClick = () => this.props.history.push("/auth/register/");
@@ -62,7 +78,7 @@ class Main extends Component {
             <button
               className="to-cart"
               onClick={() => {
-                this.handleClick(item.id);
+                this.handleClick(item.id, item.price);
               }}
               disabled={!isLoggedIn}
             >
