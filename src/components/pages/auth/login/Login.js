@@ -62,7 +62,10 @@ class Login extends Component {
     e.preventDefault();
     login(this.state.fields.email, this.state.fields.password)
       .then((response) => {
-        // sessionStorage.setItem('token', response.token);
+        console.log("SYMBAAT", localStorage.getItem("access_token"))
+        console.log("AIZHAAAN", response.data.token)
+        sessionStorage.setItem('token', response.data.token);
+        console.log("HEY BOY", sessionStorage.getItem('token'))
         this.props.history.push("/main/subscriptions/get_subscriptions/");
       })
       .catch(console.error);

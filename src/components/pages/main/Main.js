@@ -20,7 +20,7 @@ class Main extends Component {
     const token = sessionStorage.getItem("token");
 
     this.setState({
-      isLoggedIn: Boolean(!token),
+      isLoggedIn: Boolean(token),
     });
 
     const url = "http://104.248.114.51:8000/subscriptions/get_subscriptions/";
@@ -30,6 +30,8 @@ class Main extends Component {
       })
       .then((data) => {
         this.setState({ subscriptions: data });
+        console.log(this.state.isLoggedIn)
+        console.log(sessionStorage.getItem("token"))
         console.log(this.state.subscriptions);
       });
   }
