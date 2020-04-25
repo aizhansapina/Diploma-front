@@ -75,7 +75,6 @@ class Moduls extends Component {
 
     return (
       <div>
-        <Header />
         <div className="moduls_content">
           <div className="moduls__student_info">
             <h1 className="student_info-fullname">

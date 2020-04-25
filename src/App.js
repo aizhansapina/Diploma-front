@@ -19,21 +19,8 @@ function App() {
     <>
       <Switch>
         <Route path="/home" component={HomeLayout} />
-        {/* <Route path={process.env.PUBLIC_URL} components={HomeLayout}></Route> */}
         <Route path="/main" component={MainLayout} />
         <Route path="/auth" component={AuthLayout} />
-        <Route path="/listening" component={Listening} />
-        <Route path="/reading" component={Reading} />
-        <Route path="/writing" component={Writing} />
-        <Route path="/speaking" component={Speaking} />
-        <Route path="/speaking-writing" component={SandW} />
-        <Route path="/grammar" component={Grammar} />
-        <Route path="/video" component={Video} />
-        <Route path="/module_lessons/get_modules/" component={Moduls} />
-        <Route
-          path="/user_subscription/get_subscription/"
-          component={UserSubscription}
-        />
       </Switch>
     </>
   );

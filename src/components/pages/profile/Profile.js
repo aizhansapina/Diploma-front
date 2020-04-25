@@ -140,7 +140,7 @@ class Profile extends Component {
           <button className="empty__button">
             <NavLink
               className="empty-button__text"
-              to="/user_subscription/get_subscription/"
+              to="/main/user_subscription/get_subscription/"
             >
               see my subscription details
             </NavLink>
