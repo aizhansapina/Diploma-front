@@ -6,7 +6,16 @@ import "./SandW.scss";
 const SandW = (props) => {
   return (
     <Fragment>
-      <Header />
+      <div className="student_info">
+        <h1 className="student_info-fullname">
+          Name Surname (Standard/ Premium/ VIP)
+        </h1>
+        <h2 className="student_info-moduls">Left: # days</h2>
+        <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
+        <h2 className="student_info-moduls">
+          Next Lesson after: hours/minutes/seconds
+        </h2>
+      </div>
       <Submenu />
       <div className="Writing">
         <div className="container">

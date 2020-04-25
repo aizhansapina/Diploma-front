@@ -2,10 +2,13 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Poiret+One|Raleway&display=swap");
 
 .Submenu_layout {
-  width: 1000px;
+  width: 100%;
   margin: 50px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  border: 1px solid #ffb842;
+  height: 70px;
+  align-items: center;
 }
 
 .sudmenu_link {

@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, withRouter } from "react-router-dom";
 
-import "../../components/shared/header/Header.scss";
-import "./Moduls.scss";
+import Submenu from "../layouts/submenu-layout/SubmenuLayout";
+
+import "./Lesson.scss";
 
 const ActivatedTime = ({ activated_time }) => {
   if (!activated_time) {
@@ -23,7 +24,7 @@ const PreviousLessons = ({ previous_lesson }) => {
   );
 };
 
-class Moduls extends Component {
+class Lesson extends Component {
   constructor(props) {
     super(props);
     this.state = { moduls: [] };
@@ -32,23 +33,23 @@ class Moduls extends Component {
   componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
 
-    axios
-      .get("http://104.248.114.51:8000/module_lessons/get_modules/", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      })
-      .then((response) => {
-        console.log("success");
-        console.log(sessionStorage.getItem("token"));
-        console.log(response.data);
-        this.setState({ moduls: response.data });
-      })
-      .catch((error) => {
-        console.log("error" + error.response.data);
-      });
+    // axios
+    //   .get("http://104.248.114.51:8000/module_lessons/get_modules/", {
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       Authorization: token,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log("success");
+    //     console.log(sessionStorage.getItem("token"));
+    //     console.log(response.data);
+    //     this.setState({ moduls: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.log("error" + error.response.data);
+    //   });
   }
 
   render() {
@@ -60,9 +61,12 @@ class Moduls extends Component {
           <h3 className="modul_title" key={modul.module.id}>
             {modul.module.name}
           </h3>
+          <h3 className="modul_title" key={modul.lessons.id}>
+            {modul.lessons.name}
+          </h3>
           <div className="modul_lessons">
             {modul.lessons.map((lessons) => (
-              <NavLink className="navlink" to="/main/listening">
+              <NavLink className="navlink" to="/main/module/lesson">
                 <button className="lesson_button" key={lessons.id}>
                   {lessons.name}
                   <ActivatedTime activated_time={lessons.activated_time} />
@@ -87,6 +91,9 @@ class Moduls extends Component {
             <h2 className="student_info-moduls">
               Next Lesson after: hours/minutes/seconds
             </h2>
+            <div className="submenu">
+              <Submenu />
+            </div>
           </div>
           <div className="moduls_list">{modulList}</div>
         </div>
@@ -94,4 +101,4 @@ class Moduls extends Component {
     );
   }
 }
-export default Moduls;
+export default Lesson;

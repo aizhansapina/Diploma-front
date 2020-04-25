@@ -132,7 +132,7 @@ class Profile extends Component {
           <button className="empty__button">
             <NavLink
               className="empty-button__text"
-              to="/module_lessons/get_modules"
+              to="/main/module_lessons/get_modules"
             >
               start studying
             </NavLink>

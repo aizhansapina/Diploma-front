@@ -13,6 +13,7 @@ import Writing from "../../content/Writing/Writing";
 import SandW from "../../content/SpeakingAndWriting/SandW";
 import Grammar from "../../content/Grammar/Grammar";
 import Video from "../../content/Video/Video";
+import Lesson from "../../lesson/Lesson";
 
 export default class MainLayout extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export default class MainLayout extends Component {
             path="/main/module_lessons/get_modules/"
             component={Moduls}
           />
+          <Route exact path="/main/module/lesson" component={Lesson} />
           <Route
             path="/main/user_subscription/get_subscription/"
             component={UserSubscription}
