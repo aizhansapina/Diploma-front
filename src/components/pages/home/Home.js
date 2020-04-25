@@ -9,7 +9,8 @@ import profile_white from "../../../images/account-white.png";
 import "./Home.scss";
 import "../../../components/shared/header/Header.scss";
 
-export default function Home() {
+export default function Home(props) {
+  const isLoggedIn = props.isLoggedIn;
   return (
     <div>
       <div className="Header">
@@ -30,6 +31,7 @@ export default function Home() {
           <span className="Header__title">IELTS ACADEMY</span>
         </NavLink>
         <div className="Nav-right">
+        { !isLoggedIn ?
           <NavLink className="Nav__account" to="/auth/users/login/">
             sign in
             <div className="dropdown">
@@ -40,10 +42,17 @@ export default function Home() {
                 Login
               </NavLink>
             </div>
+          </NavLink> :
+          <NavLink className="Nav__account" to="/auth/users/login/">
+          log out 
           </NavLink>
-          <NavLink exact className="Nav__link-right" to="/main/profile">
+        } 
+        { isLoggedIn && (
+        <NavLink exact className="Nav__link-right" to="/main/profile">
             <img src={profile_white} alt={profile_white} className="Nav__img" />
-          </NavLink>
+          </NavLink>)
+        }
+          
         </div>
       </div>
       <div className="banner">

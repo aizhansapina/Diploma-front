@@ -6,6 +6,7 @@ import Register from "../../pages/auth/register/Register";
 import Header from "../../shared/header/Header";
 import { ActivationPage } from "../../pages/auth/ActivationPage";
 import { NotificationPage } from "../../pages/auth/notification/NotificationPage";
+import { Logout } from "../../pages/auth/logout/Logout";
 
 export default class AuthLayout extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class AuthLayout extends Component {
           <Route exact path="/auth/activations/activate/:uuid">
             <ActivationPage />
           </Route>
+          <Route exact path =  "/auth/users/login/" component = {Logout}></Route>
         </Switch>
       </div>
     );

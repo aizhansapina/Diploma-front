@@ -8,10 +8,24 @@ import Moduls from "../../moduls/Moduls";
 // import Order from "../../pages/order/Order";
 
 export default class MainLayout extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoggedIn: false
+    };
+  }
+  componentDidMount() {
+    const token = sessionStorage.getItem("token");
+    this.setState({
+      isLoggedIn: Boolean(token),
+    });
+  }
   render() {
+    const { isLoggedIn } = this.state;
     return (
       <div>
-        <Header />
+        <Header isLoggedIn = {isLoggedIn}/>
         <Switch>
           <Route exact path="/main/subscriptions/get_subscriptions/" component={Main} />
           <Route exact path="/main/profile" component={Profile}></Route>
