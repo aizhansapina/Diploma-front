@@ -137,6 +137,14 @@ class Profile extends Component {
               start studying
             </NavLink>
           </button>
+          <button className="empty__button">
+            <NavLink
+              className="empty-button__text"
+              to="/user_subscription/get_subscription/"
+            >
+              see my subscription details
+            </NavLink>
+          </button>
           <div className="Cart">{addedItems}</div>
           <div className="Cart__footer">
             {/* <div className="Cart__total">

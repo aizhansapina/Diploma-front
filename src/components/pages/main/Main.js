@@ -30,36 +30,45 @@ class Main extends Component {
       })
       .then((data) => {
         this.setState({ subscriptions: data });
-        console.log(this.state.isLoggedIn)
-        console.log(sessionStorage.getItem("token"))
+        console.log(this.state.isLoggedIn);
+        console.log(sessionStorage.getItem("token"));
         console.log(this.state.subscriptions);
       });
   }
 
   handleClick = (id, paid_amount) => {
-    console.log("POMOGIIITE", id)
-    fetch("http://104.248.114.51:8000/subscriptions/"+ id +"/add_user_subscription/", {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json', 
-        'Authorization': 'JWT '+ sessionStorage.getItem("token")
-      },
-      method: "POST",
-      body: JSON.stringify({"paid_amount": paid_amount})
-    })
-    .then((response) => response.text())
-    .then((responseText) => {
-      alert(responseText);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    console.log("POMOGIIITE", id);
+    fetch(
+      "http://104.248.114.51:8000/subscriptions/" +
+        id +
+        "/add_user_subscription/",
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "JWT " + sessionStorage.getItem("token"),
+        },
+        method: "POST",
+        body: JSON.stringify({ paid_amount: paid_amount }),
+      }
+    )
+      .then(
+        (response) => response.text(),
+        this.props.history.push("/main/profile")
+      )
+      .then((responseText) => {
+        alert(responseText);
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   onRegisterClick = () => this.props.history.push("/auth/register/");
 
   render() {
-    console.log("wtf")
+    console.log("wtf");
     const { isLoggedIn, subscriptions } = this.state;
     let itemList = subscriptions.map((item) => {
       return (

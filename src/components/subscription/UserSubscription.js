@@ -26,14 +26,14 @@ import "./UserSubscription.scss";
 class UserSubscription extends Component {
   constructor(props) {
     super(props);
-    this.state = { moduls: [] };
+    this.state = { subscription: null };
   }
 
   componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
 
     axios
-      .get("http://104.248.114.51:8000/module_lessons/get_modules/", {
+      .get("http://104.248.114.51:8000/user_subscription/get_subscription/", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -42,9 +42,8 @@ class UserSubscription extends Component {
       })
       .then((response) => {
         console.log("success");
-        console.log(sessionStorage.getItem("token"));
-        console.log(response.data);
-        this.setState({ moduls: response.data });
+        // console.log(response.data);
+        this.setState({ subscription: response.data });
       })
       .catch((error) => {
         console.log("error" + error);
@@ -52,42 +51,76 @@ class UserSubscription extends Component {
   }
 
   render() {
-    console.log("state", this.state);
-    const { moduls } = this.state;
-    let modulList = moduls.map((modul) => {
-      return (
-        <div className="modul" key={modul.id}>
-          <h3 className="modul_title" key={modul.module.id}>
-            {modul.module.name}
-          </h3>
-          <div className="modul_lessons">
-            {modul.lessons.map((lessons) => (
-              <button className="lesson_button" key={lessons.id}>
-                {lessons.name}
-                <ActivatedTime activated_time={lessons.activated_time} />
-                <PreviousLessons previous_lesson={modul.previous_lesson} />
-              </button>
-            ))}
-          </div>
-        </div>
-      );
-    });
-
+    console.log(this.state.subscription);
+    const { subscription } = this.state;
     return (
       <div>
         <Header />
-        <div className="moduls_content">
-          <div className="moduls__student_info">
-            <h1 className="student_info-fullname">
-              Name Surname (Standard/ Premium/ VIP)
-            </h1>
-            <h2 className="student_info-moduls">Left: # days</h2>
-            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
-            <h2 className="student_info-moduls">
-              Next Lesson after: hours/minutes/seconds
-            </h2>
+        <div className="subscription_container" key={subscription.id}>
+          <h1 className="container_title">
+            Subscription for: {subscription.user.full_name}
+          </h1>
+          <div className="subscription_content">
+            <div
+              className="subscription_details"
+              key={subscription.subscription.id}
+            >
+              <table>
+                <tr>
+                  <th className="subscription_info__title">
+                    Subscription Type:
+                  </th>
+                  <td className="subscription_info">
+                    {subscription.subscription.name}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">Description:</th>
+                  <td className="subscription_info">
+                    {subscription.subscription.description_full}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">Price:</th>
+                  <td className="subscription_info">
+                    {subscription.subscription.price}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">Discount:</th>
+                  <td className="subscription_info">
+                    {subscription.subscription.discount}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">Active:</th>
+                  <td className="subscription_info">
+                    {subscription.subscription.is_active}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">Days:</th>
+                  <td className="subscription_info">
+                    {subscription.subscription.days}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">
+                    Subscription start date:
+                  </th>
+                  <td className="subscription_info">
+                    {subscription.start_date}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="subscription_info__title">
+                    Subscription end date:
+                  </th>
+                  <td className="subscription_info">{subscription.end_date}</td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div className="moduls_list">{modulList}</div>
         </div>
       </div>
     );

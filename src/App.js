@@ -12,6 +12,7 @@ import SandW from "./components/content/SpeakingAndWriting/SandW";
 import Grammar from "./components/content/Grammar/Grammar";
 import Video from "./components/content/Video/Video";
 import Moduls from "./components/moduls/Moduls";
+import UserSubscription from "./components/subscription/UserSubscription";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
         <Route path="/grammar" component={Grammar} />
         <Route path="/video" component={Video} />
         <Route path="/module_lessons/get_modules/" component={Moduls} />
+        <Route
+          path="/user_subscription/get_subscription/"
+          component={UserSubscription}
+        />
       </Switch>
     </>
   );
