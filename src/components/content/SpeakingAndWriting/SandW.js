@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Header from "../../shared/header/Header";
+import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./SandW.scss";
 
@@ -31,6 +31,9 @@ const SandW = (props) => {
           <div className="feedback_section">
             <button className="feedback">Speaking</button>
             <button className="feedback">Writing</button>
+            <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
+              <button className="button__add-quiz">Add Quiz To section</button>
+            </NavLink>
           </div>
           <div className="main_content">
             <h3 classname="introduction_title">Recommendations</h3>

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Header from "../../shared/header/Header";
+import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./Speaking.scss";
 
@@ -31,6 +31,9 @@ const Speaking = (props) => {
           <div className="lang">
             <button className="feedback">Rus</button>
             <button className="feedback">Eng</button>
+            <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
+              <button className="button__add-quiz">Add Quiz To section</button>
+            </NavLink>
           </div>
           <div className="main_content">
             <div className="introduction_text">

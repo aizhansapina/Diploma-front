@@ -14,6 +14,7 @@ import SandW from "../../content/SpeakingAndWriting/SandW";
 import Grammar from "../../content/Grammar/Grammar";
 import Video from "../../content/Video/Video";
 import Lesson from "../../lesson/Lesson";
+import Quiz from "../../quiz/Quiz";
 
 export default class MainLayout extends Component {
   constructor(props) {
@@ -51,13 +52,14 @@ export default class MainLayout extends Component {
             path="/main/user_subscription/get_subscription/"
             component={UserSubscription}
           />
-          <Route path="/main/listening" component={Listening} />
-          <Route path="/main/reading" component={Reading} />
-          <Route path="/main/writing" component={Writing} />
-          <Route path="/main/speaking" component={Speaking} />
-          <Route path="/main/speaking-writing" component={SandW} />
-          <Route path="/main/grammar" component={Grammar} />
-          <Route path="/main/video" component={Video} />
+          <Route exact path="/main/listening" component={Listening} />
+          <Route exact path="/main/reading" component={Reading} />
+          <Route exact path="/main/writing" component={Writing} />
+          <Route exact path="/main/speaking" component={Speaking} />
+          <Route exact path="/main/speaking-writing" component={SandW} />
+          <Route exact path="/main/grammar" component={Grammar} />
+          <Route exact path="/main/video" component={Video} />
+          <Route exact path="/main/add-quiz/" component={Quiz} />
         </Switch>
       </div>
     );

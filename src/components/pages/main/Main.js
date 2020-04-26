@@ -104,7 +104,6 @@ class Main extends Component {
           <h1 className="Register-button__title">Do you want a demo lesson?</h1>
           {!isLoggedIn && (
             <button onClick={this.onRegisterClick} className="Product__button">
-              {/* <span className="button__text">register first</span> */}
               <NavLink className="button__text" to="/auth/register/">
                 Register first
               </NavLink>
