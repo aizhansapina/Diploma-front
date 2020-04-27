@@ -7,53 +7,11 @@ import "./Question.scss";
 class Question extends Component {
   constructor(props) {
     super(props);
-    this.state = { answers: [], act: 0, index: "" };
+    this.state = { answers: [] };
   }
-
-  addAnswer = (e) => {
-    e.preventDefault();
-    let answers = this.state.answers;
-    let name = this.refs.name.value;
-
-    if (this.state.act === 0) {
-      let data = {
-        name,
-      };
-      answers.push(data);
-    } else {
-      let index = this.state.index;
-      answers[index].name = name;
-    }
-
-    this.setState({
-      answers: answers,
-      act: 0,
-    });
-
-    this.refs.myForm.reset();
-    this.refs.name.focus();
-  };
 
   componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
-
-    // axios
-    //   .get("http://104.248.114.51:8000/module_lessons/get_modules/", {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       Authorization: token,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log("success");
-    //     console.log(sessionStorage.getItem("token"));
-    //     console.log(response.data);
-    //     this.setState({ moduls: response.data });
-    //   })
-    //   .catch((error) => {
-    //     console.log("error" + error.response.data);
-    //   });
   }
 
   render() {
@@ -82,7 +40,7 @@ class Question extends Component {
           className="question__input"
         />
         <div list={answers}>
-          <form ref="myForm" className="answer" onSubmit={this.addAnswer}>
+          <form ref="myForm" className="answer">
             <input
               placeholder="Add answer..."
               className="question__answer_input"
@@ -95,7 +53,7 @@ class Question extends Component {
               value="Bike"
             />
           </form>
-          <form ref="myForm" className="answer" onSubmit={this.addAnswer}>
+          <form ref="myForm" className="answer">
             <input
               placeholder="Add answer..."
               className="question__answer_input"
@@ -108,11 +66,7 @@ class Question extends Component {
               value="Bike"
             />
           </form>
-          <button
-            className="answer__more_button"
-            ref="myForm"
-            onSubmit={this.addAnswer}
-          >
+          <button className="answer__more_button" ref="myForm">
             add more answers
           </button>
         </div>
