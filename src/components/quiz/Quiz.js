@@ -46,7 +46,7 @@ class Quiz extends Component {
       .then((response) => {
         console.log("success");
         console.log(sessionStorage.getItem("token"));
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({ quiz: response.data });
       })
       .catch((error) => {
@@ -57,21 +57,26 @@ class Quiz extends Component {
   render() {
     console.log("state", this.state);
     const { quiz } = this.state;
-    let questionList = quiz.questions.map((question) => {
+    let keys = [];
+    if (this.state.quiz !== null) {
+        keys = Object.keys(this.state.quiz);
+    }
+    let questionList = keys.map(ques => {
+      console.log(this.state.quiz[ques].description)
       return (
-        <div className="question-content" key={question.id}>
+        <div className="question-content" key={this.state.quiz[ques].id}>
           <h3 className="question_below_description">
-            {question.question_type}
+            {this.state.quiz[ques].id}
           </h3>
           <div className="question">
             <table>
-              <p className="question_description">{question.description}</p>
+              <p className="question_description">{this.state.quiz[ques].description}</p>
               <tr>
-                <td className="question_name">{question.body_text}</td>
+                <td className="question_name">{this.state.quiz[ques].body_text}</td>
                 <td>
                   <div className="form__input">
                     <button className="question_circle-button">
-                      {question.id}
+                      {this.state.quiz[ques].id}
                     </button>
                     <Input
                       name="answer"
@@ -88,8 +93,8 @@ class Quiz extends Component {
             </table>
           </div>
         </div>
-      );
-    });
+      )
+    })
 
     return (
       <div>
