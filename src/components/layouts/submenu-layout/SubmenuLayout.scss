@@ -6,8 +6,8 @@
   margin: 50px auto;
   display: flex;
   justify-content: space-around;
-  border: 1px solid #ffb842;
-  height: 70px;
+  border: 1px solid #f39fdc;
+  height: 80px;
   align-items: center;
 }
 
@@ -17,12 +17,20 @@
   display: block;
   color: #000000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   transition: 0.3s;
   font-weight: 300;
+  align-items: center;
+  padding-top: 30px;
 }
 
-.sudmenu_link:hover {
-  color: #ffb842;
-  transition: 0.3s;
+.submenu_title {
+  display: inline-block;
+  position: relative;
+  bottom: 10px;
+}
+
+.submenu__img {
+  width: 34px;
+  margin-right: 10px;
 }

@@ -11,10 +11,11 @@
 .Register__title {
   color: #000;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   font-family: "Josefin Sans", sans-serif;
+  line-height: 1.6;
 }
 
 .Register__form {
@@ -49,8 +50,8 @@
   width: 200px;
   height: 50px;
   //background-color: #f9f3f5ff;
-  background-color: #ffb842;
-  color: #000;
+  background-color: #f39fdc;
+  color: #fff;
   text-transform: uppercase;
   border: none;
   font-size: 14px;
@@ -60,8 +61,9 @@
 }
 
 .form__button:hover {
+  background-color: #9ab5e1;
+  background-image: linear-gradient(315deg, #9ab5e1 0%, #f39fdc 74%);
   color: #fff;
-  background-color: #000;
 }
 
 .input__error {

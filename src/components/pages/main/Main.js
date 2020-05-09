@@ -76,10 +76,9 @@ class Main extends Component {
           {/* <img src={item.img} alt={item.title} className="Product__img" /> */}
           <div className="Product__img">
             <span className="Product__name">{item.name}</span>
-            <p className="Product__list">{item.description_short}</p>
             <p className="Product__list">{item.description_full}</p>
-            <p className="Product__list">Discount: {item.discount}</p>
-            <p className="Product__list">Days: {item.days}</p>
+            <p className="Product__list">DISCOUNT: {item.discount}</p>
+            <p className="Product__list">DAYS: {item.days}</p>
           </div>
           <div className="Product__description">
             <p className="Product__title">{item.title}</p>
@@ -101,11 +100,11 @@ class Main extends Component {
     return (
       <div>
         <div>
-          <h1 className="Register-button__title">Do you want a demo lesson?</h1>
+          {/* <h1 className="Register-button__title">Do you want a demo lesson?</h1> */}
           {!isLoggedIn && (
             <button onClick={this.onRegisterClick} className="Product__button">
               <NavLink className="button__text" to="/auth/register/">
-                Register first
+                Register to get the course
               </NavLink>
             </button>
           )}

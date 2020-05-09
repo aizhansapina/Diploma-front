@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./Listening.scss";
@@ -27,12 +27,12 @@ const Listening = (props) => {
               <h2 className="module">{props.module}</h2>
             </div>
           </div>
-          <h1 className="title">Listening Modul # & Lesson #</h1>
-          <div className="lang">
-            <button className="feedback">Rus</button>
-            <button className="feedback">Eng</button>
+          <div className="unknown">
+            <button className="title_box">Listening Modul # & Lesson #</button>
             <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
-              <button className="button__add-quiz">Add Quiz To section</button>
+              <button className="button__add-quiz">
+                Take Quiz for section
+              </button>
             </NavLink>
           </div>
           <div className="main_content">

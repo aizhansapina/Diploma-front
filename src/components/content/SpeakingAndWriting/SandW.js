@@ -27,13 +27,25 @@ const SandW = (props) => {
               <h2 className="module">{props.module}</h2>
             </div>
           </div>
-          <h1 className="title">Speaking&Writing Modul # Lesson #</h1>
+          <div className="unknown">
+            <NavLink className="button__add-quiz__link" to="/main/grammar/">
+              <button className="button__to_bonus">Grammar Bonus</button>
+            </NavLink>
+            <NavLink className="button__add-quiz__link" to="/main/video/">
+              <button className="button__to_bonus">Video Bonus</button>
+            </NavLink>
+            <NavLink
+              className="button__add-quiz__link"
+              to="/main/speaking-writing/"
+            >
+              <button className="button__add-quiz">
+                Speaking&Writing Bonus
+              </button>
+            </NavLink>
+          </div>
           <div className="feedback_section">
             <button className="feedback">Speaking</button>
             <button className="feedback">Writing</button>
-            <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
-              <button className="button__add-quiz">Add Quiz To section</button>
-            </NavLink>
           </div>
           <div className="main_content">
             <h3 classname="introduction_title">Recommendations</h3>

@@ -1,4 +1,4 @@
-import Item1 from "../../images/up-arrow.png";
+import Item1 from "../../images/study.jpg";
 import Item2 from "../../images/up-arrow.png";
 import Item3 from "../../images/up-arrow.png";
 

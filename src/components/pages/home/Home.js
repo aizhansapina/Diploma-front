@@ -71,9 +71,6 @@ export default function Home(props) {
           </button>
         </div>
       </div>
-      {/* <div className="submenu">
-        <Submenu />
-      </div> */}
     </div>
   );
 }

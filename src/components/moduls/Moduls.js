@@ -31,18 +31,22 @@ class Moduls extends Component {
 
   handleClick = (moduleId, lessonId) => {
     fetch(
-      "http://104.248.114.51:8000/user_module/module/" + moduleId + "/lesson/" + lessonId + "/activate_lesson/",
+      "http://104.248.114.51:8000/user_module/module/" +
+        moduleId +
+        "/lesson/" +
+        lessonId +
+        "/activate_lesson/",
       {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: "JWT " + sessionStorage.getItem("token"),
         },
-        method: "POST"
+        method: "POST",
       }
     )
       .then(
-        (response) => response.text(),
+        (response) => response.text()
         // this.props.history.push("/main/profile")
       )
       .then((responseText) => {
@@ -86,18 +90,16 @@ class Moduls extends Component {
             {modul.module.name}
           </h3>
           <div className="modul_lessons">
-            {modul.lessons.map((lessons) => (
-              <NavLink className="navlink" to="/main/listening">
-                <button className="lesson_button" key={lessons.id}>
-                  {lessons.name}
-                  {!lessons.activated_time ? 
+            <NavLink className="navlink" to="/main/listening">
+              <button className="lesson_button" key={modul.lesson.id}>
+                {modul.lesson.name}
+                {/* {!lessons.activated_time ? 
                   <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, lessons.id);}}>
                   Press To Activate</p> : 
-                <p className="lesson_button__text">Activated Time: {lessons.activated_time}</p>}
-                  <PreviousLessons previous_lesson={modul.previous_lesson} />
-                </button>
-              </NavLink>
-            ))}
+                <p className="lesson_button__text">Activated Time: {lessons.activated_time}</p>} */}
+                <PreviousLessons previous_lesson={modul.previous_lesson} />
+              </button>
+            </NavLink>
           </div>
         </div>
       );

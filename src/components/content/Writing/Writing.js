@@ -27,12 +27,12 @@ const Writing = (props) => {
               <h2 className="module">{props.module}</h2>
             </div>
           </div>
-          <h1 className="title">Writing Modul # Lesson #</h1>
-          <div className="lang">
-            <button className="feedback">Rus</button>
-            <button className="feedback">Eng</button>
+          <div className="unknown">
+            <button className="title_box">Writing Modul # & Lesson #</button>
             <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
-              <button className="button__add-quiz">Add Quiz To section</button>
+              <button className="button__add-quiz">
+                Take Quiz for section
+              </button>
             </NavLink>
           </div>
           <div className="main_content">

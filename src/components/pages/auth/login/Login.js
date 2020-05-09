@@ -62,10 +62,10 @@ class Login extends Component {
     e.preventDefault();
     login(this.state.fields.email, this.state.fields.password)
       .then((response) => {
-        console.log("SYMBAAT", localStorage.getItem("access_token"))
-        console.log("AIZHAAAN", response.data.token)
-        sessionStorage.setItem('token', response.data.token);
-        console.log("HEY BOY", sessionStorage.getItem('token'))
+        console.log("SYMBAAT", localStorage.getItem("access_token"));
+        console.log("AIZHAAAN", response.data.token);
+        sessionStorage.setItem("token", response.data.token);
+        console.log("HEY BOY", sessionStorage.getItem("token"));
         this.props.history.push("/main/profile");
       })
       .catch(console.error);
@@ -78,7 +78,7 @@ class Login extends Component {
     } = this.state;
     return (
       <div className="Register">
-        <h2 className="Register__title">login</h2>
+        <h2 className="Register__title">login to your account</h2>
         <form onSubmit={this.handleSubmit} className="Register__form">
           <div className="form__input">
             <Input

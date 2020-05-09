@@ -35,17 +35,25 @@
   font-family: "Josefin Sans", sans-serif;
   width: 200px;
   height: 50px;
-  background-color: #ffb842;
+  background-color: #f39fdc;
   text-transform: uppercase;
   border: none;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 3px;
   text-decoration: none;
+  color: #fff;
+}
+
+.banner__button:hover {
+  background-color: #9ab5e1;
+  background-image: linear-gradient(315deg, #9ab5e1 0%, #f39fdc 74%);
+  color: #fff;
 }
 
 .button__text {
   text-decoration: none;
   color: #fff;
+  font-weight: 300;
 }
 
 .submenu {
