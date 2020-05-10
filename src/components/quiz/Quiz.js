@@ -61,9 +61,13 @@ class Quiz extends Component {
     if (this.state.quiz !== null) {
         keys = Object.keys(this.state.quiz);
     }
+    let quizID = ""
+    let quizDescription = ""
     let questionList = [];
     keys.map(ques => {
       console.log('POLO',this.state.quiz[ques].questions)
+      quizID = this.state.quiz[ques].id
+      quizDescription = this.state.quiz[ques].description
       questionList = this.state.quiz[ques].questions.map((item) => {
         console.log("AZEM", item)
         return (
@@ -114,8 +118,8 @@ class Quiz extends Component {
               Next Lesson after: hours/minutes/seconds
             </h2>
           </div>
-          <div className="quiz-content" key={quiz.id}>
-            <button className="title_box">{quiz.description}</button>
+          <div className="quiz-content" key={quizID}>
+            <button className="title_box">{quizDescription}</button>
             <div className="question-content">{questionList}</div>
             <button type="submit" className="form__button">
               SUBMit
