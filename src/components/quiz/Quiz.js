@@ -61,39 +61,44 @@ class Quiz extends Component {
     if (this.state.quiz !== null) {
         keys = Object.keys(this.state.quiz);
     }
-    let questionList = keys.map(ques => {
-      console.log(this.state.quiz[ques].description)
-      return (
-        <div className="question-content" key={this.state.quiz[ques].id}>
-          <h3 className="question_below_description">
-            {this.state.quiz[ques].id}
-          </h3>
-          <div className="question">
-            <table>
-              <p className="question_description">{this.state.quiz[ques].description}</p>
-              <tr>
-                <td className="question_name">{this.state.quiz[ques].body_text}</td>
-                <td>
-                  <div className="form__input">
-                    <button className="question_circle-button">
-                      {this.state.quiz[ques].id}
-                    </button>
-                    <Input
-                      name="answer"
-                      type="text"
-                      // onChange={this.setFormField}
-                      className="answer__input"
-                      placeholder="Answer"
-                      autocomplete="off"
-                    />
-                    <span className="form__underline"></span>
-                  </div>
-                </td>
-              </tr>
-            </table>
+    let questionList = [];
+    keys.map(ques => {
+      console.log('POLO',this.state.quiz[ques].questions)
+      questionList = this.state.quiz[ques].questions.map((item) => {
+        console.log("AZEM", item)
+        return (
+          <div className="question-content" key={item.id}>
+            <h3 className="question_below_description">
+              {item.question_type}
+            </h3>
+            <div className="question">
+              <table>
+                <p className="question_description">{item.description}</p>
+                <tr>
+                  <td className="question_name">{item.body_text}</td>
+                  <td>
+                    <div className="form__input">
+                      <button className="question_circle-button">
+                        {item.id}
+                      </button>
+                      <Input
+                        name="answer"
+                        type="text"
+                        // onChange={this.setFormField}
+                        className="answer__input"
+                        placeholder="Answer"
+                        autocomplete="off"
+                      />
+                      <span className="form__underline"></span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-        </div>
-      )
+        )
+      })
+      
     })
 
     return (
