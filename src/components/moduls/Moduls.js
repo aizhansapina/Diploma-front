@@ -26,7 +26,10 @@ const PreviousLessons = ({ previous_lesson }) => {
 class Moduls extends Component {
   constructor(props) {
     super(props);
-    this.state = { moduls: [] };
+    this.state = {
+       moduls: [],
+       subscription: "" 
+      };
   }
 
   handleClick = (moduleId, lessonId) => {
@@ -78,11 +81,37 @@ class Moduls extends Component {
       .catch((error) => {
         console.log("error" + error.response.data);
       });
+
+      axios
+      .get("http://104.248.114.51:8000/user_subscription/get_subscription/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success AAA");
+        this.setState({ subscription: response.data });
+        console.log("hey", response.data)
+        console.log("DAUKA",this.state.subscription.id)
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
   }
 
   render() {
     console.log("state", this.state);
     const { moduls } = this.state;
+    const { subscription } = this.state;
+    var date1 = new Date(subscription.end_date); 
+    var date2 = new Date(subscription.start_date);
+    const diffTime = Math.abs(date2 - date1)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     let modulList = moduls.map((modul) => {
       return (
         <div className="modul" key={modul.id}>
@@ -106,20 +135,24 @@ class Moduls extends Component {
     });
 
     return (
-      <div>
-        <div className="moduls_content">
+      <div> { 
+        subscription && (
+          <div className="moduls_content">
           <div className="moduls__student_info">
             <h1 className="student_info-fullname">
-              Name Surname (Standard/ Premium/ VIP)
+            Student: { subscription.user.full_name }
             </h1>
-            <h2 className="student_info-moduls">Left: # days</h2>
-            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
             <h2 className="student_info-moduls">
-              Next Lesson after: hours/minutes/seconds
+            subscription: {subscription.subscription.description_short}
             </h2>
+            <h2 className="student_info-moduls">Left: {diffDays} days</h2>
+            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
           </div>
           <div className="moduls_list">{modulList}</div>
         </div>
+        )
+      }
+        
       </div>
     );
   }

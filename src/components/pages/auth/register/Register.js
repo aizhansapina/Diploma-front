@@ -101,19 +101,8 @@ class Register extends Component {
           type="text"
           onChange={this.setFormField}
           className="input"
-          placeholder="First Name"
+          placeholder="Full Name"
           value={full_name}
-        />
-        <span class="form__underline"></span>
-      </div>
-      <div className="form__input">
-        <Input
-          name="lastName"
-          type="text"
-          className="input"
-          onChange={this.setFormField}
-          placeholder="Last Name"
-          value={lastName}
         />
         <span class="form__underline"></span>
       </div>
