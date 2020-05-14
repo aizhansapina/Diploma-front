@@ -2,31 +2,73 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./Listening.scss";
+import { Component } from "react";
+import axios from "axios";
 
-const Listening = (props) => {
-  return (
+class Listening extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+       subscription: "" 
+      };
+  }
+
+  componentDidMount() {
+    const token = "JWT " + sessionStorage.getItem("token");
+
+      axios
+      .get("http://104.248.114.51:8000/user_subscription/get_subscription/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success AAA");
+        this.setState({ subscription: response.data });
+        console.log("hey", response.data)
+        console.log("DAUKA",this.state.subscription.id)
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
+  }
+
+  render() {
+    console.log("state", this.state);
+    const { subscription } = this.state;
+    var date1 = new Date(subscription.end_date); 
+    var date2 = new Date(subscription.start_date);
+    const diffTime = Math.abs(date2 - date1)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+    return (
     <Fragment>
-      <div className="student_info">
-        <h1 className="student_info-fullname">
-          Name Surname (Standard/ Premium/ VIP)
-        </h1>
-        <h2 className="student_info-moduls">Left: # days</h2>
-        <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
-        <h2 className="student_info-moduls">
-          Next Lesson after: hours/minutes/seconds
-        </h2>
+      <div> { 
+        subscription && (
+          <div className="moduls_content">
+          <div className="moduls__student_info">
+            <h1 className="student_info-fullname">
+            Student: { subscription.user.full_name }
+            </h1>
+            <h2 className="student_info-moduls">
+            subscription: {subscription.subscription.description_short}
+            </h2>
+            <h2 className="student_info-moduls">Left: {diffDays} days</h2>
+            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
+          </div>
+        </div>
+        )
+      }
+        
       </div>
       <Submenu />
       <div className="Listening">
         <div className="container">
-          <div className="student_data">
-            <h1 className="student_name">{props.name}</h1>
-            <div className="course_data">
-              <p className="day">{props.days}</p>
-              <p className="next_lesson">{props.lesson}</p>
-              <h2 className="module">{props.module}</h2>
-            </div>
-          </div>
           <div className="unknown">
             <button className="title_box">Listening Modul # & Lesson #</button>
             <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
@@ -74,6 +116,8 @@ const Listening = (props) => {
       </div>
     </Fragment>
   );
-};
+
+  }
+}
 
 export default Listening;
