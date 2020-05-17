@@ -4,7 +4,10 @@
 .banner {
   //background-image: url("../../../images/kylie-skin-banner.jpeg");
   // height: 100vh;
+  background-image: url("../../../images/notebook.jpg");
+  height: 100vh;
   background-position: center;
+  background-size: cover;
   text-align: center;
 }
 
@@ -51,6 +54,12 @@
 }
 
 .button__text {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+}
+
+.button__textt {
   text-decoration: none;
   color: #fff;
   font-weight: 300;

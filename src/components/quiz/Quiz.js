@@ -62,10 +62,10 @@ class Quiz extends Component {
         },
       })
       .then((response) => {
-        console.log("success AAA");
+        console.log("success");
         this.setState({ subscription: response.data });
-        console.log("hey", response.data)
-        console.log("DAUKA",this.state.subscription.id)
+        console.log(response.data)
+        console.log(this.state.subscription.id)
       })
       .catch((error) => {
         if (error.response.status == 400) {
@@ -91,11 +91,11 @@ class Quiz extends Component {
     let quizDescription = ""
     let questionList = [];
     keys.map(ques => {
-      console.log('POLO',this.state.quiz[ques].questions)
+      console.log(this.state.quiz[ques].questions)
       quizID = this.state.quiz[ques].id
       quizDescription = this.state.quiz[ques].description
       questionList = this.state.quiz[ques].questions.map((item) => {
-        console.log("AZEM", item)
+        console.log(item)
         return (
           <div className="question-content" key={item.id}>
             <h3 className="question_below_description">
@@ -145,7 +145,7 @@ class Quiz extends Component {
             subscription: {subscription.subscription.description_short}
             </h2>
             <h2 className="student_info-moduls">Left: {diffDays} days</h2>
-            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
+            <h2 className="student_info-moduls">Current: Module 1 Lesson 1</h2>
           </div>
         </div>
         )

@@ -25,10 +25,8 @@ class Listening extends Component {
         },
       })
       .then((response) => {
-        console.log("success AAA");
+        console.log("success");
         this.setState({ subscription: response.data });
-        console.log("hey", response.data)
-        console.log("DAUKA",this.state.subscription.id)
       })
       .catch((error) => {
         if (error.response.status == 400) {

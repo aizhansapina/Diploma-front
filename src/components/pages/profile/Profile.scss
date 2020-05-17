@@ -1,34 +1,10 @@
-.Cart__container {
-  width: 1200px;
-  text-align: center;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-}
 
-.Cart__title {
-  color: #000;
-  font-weight: 400;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-.cart-empty {
-  color: #000;
-  font-weight: 400;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-family: "Josefin Sans", sans-serif;
-}
-.empty__button {
+.profile_button {
   display: block;
   font-family: "Josefin Sans", sans-serif;
-  width: 200px;
+  width: 300px;
   height: 70px;
-  background-color: #000;
+  background-color:  #9ab5e1;
   text-transform: uppercase;
   border: none;
   font-size: 16px;
@@ -41,321 +17,56 @@
   text-decoration: none;
   color: #fff;
 }
-.Cart__items {
-  width: 100%;
-  margin-top: 50px;
-  display: table;
-}
-.Cart__row {
-  display: table-row;
-  background-color: #ffd14f;
-  border-radius: 5px;
+
+.badges_container {
+  width: 90%;
+  margin: 20px auto;
 }
 
-.head__titles {
-  color: #000;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-family: "Raleway", sans-serif;
-}
-
-.row-name {
-  width: 300px;
-  padding: 20px;
-}
-.row-image {
-  padding: 20px;
+.badge {
+  display: inline-block;
   width: 200px;
+  text-align: center;
+  margin: 25px;
 }
 
-.product__image {
-  width: 200px;
+.badge_image {
+  width: 120px
 }
 
-.product__name {
-  color: #000;
-  font-weight: 400;
+.badge_title {
+  font-family: "Josefin Sans", sans-serif;
   font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: "Raleway", sans-serif;
-  display: inline-block;
+  font-weight: 300;
 }
 
-.product__description {
-  color: #000;
-  font-weight: 200;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: "Raleway", sans-serif;
-  display: block;
-}
-
-.button__delete {
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.product__delete {
-  width: 20px;
-}
-
-.quantity-arrow {
-  height: 22px;
-  border: none;
-  background-color: #e1e2e3;
-}
-
-.arrow__img {
-  width: 10px;
-}
-
-.quantity-input {
-  width: 20px;
-  background-color: #e1e2e3;
-  border: none;
-  text-align: center;
-}
-
-.quantity-input:focus {
-  outline: none !important;
-}
-
-.product__quantity {
-  width: 80px;
-  height: 30px;
-  background-color: #e1e2e3;
-  align-items: center;
-  display: inline-flex;
-  justify-content: space-between;
-}
-
-.quantity__col {
-  justify-content: center;
-  align-items: center;
-}
-
-.Cart__total {
-  background-color: #000;
-  width: 150px;
-  height: 50px;
-  text-align: center;
-  // align-items: center;
-  // justify-content: center;
-  // margin: 0 auto;
-  display: inline-block;
-}
-
-.total-price {
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  height: 100%;
+.badge_subtitle-done {
   font-family: "Josefin Sans", sans-serif;
-  font-weight: 400;
-  // padding-top: 16px;
-}
-
-.quantity__text {
-  color: #000;
-  font-weight: 400;
-  font-size: 12px;
+  font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: "Raleway", sans-serif;
-  display: inline-block;
+  font-weight: 400;
+  color: greenyellow;
 }
 
-.Cart__checkout {
+.badge_subtitle {
   font-family: "Josefin Sans", sans-serif;
-  width: 150px;
-  height: 50px;
-  background-color: #000;
+  font-size: 18px;
   text-transform: uppercase;
-  border: none;
+  font-weight: 400;
+  color: grey;
+}
+
+.prize_title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.prize_subtitle {
+  font-family: "Josefin Sans", sans-serif;
   font-size: 16px;
-  letter-spacing: 3px;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.checkout__text {
-  text-decoration: none;
-  color: #fff;
-}
-
-.Cart__footer {
-  justify-content: space-evenly;
-  // align-items: center;
-  margin: 30px 0;
-  display: flex;
-}
-
-@media (width: 1920px) {
-  .Cart__container {
-    width: 1600px;
-  }
-
-  .Cart__title {
-    font-size: 18px;
-  }
-
-  .cart-empty {
-    font-size: 20px;
-  }
-  .empty__button {
-    width: 240px;
-    height: 60px;
-    font-size: 18px;
-  }
-
-  .Cart__items {
-    margin-top: 60px;
-  }
-
-  .head__titles {
-    font-size: 14px;
-  }
-
-  .row-name {
-    width: 620px;
-  }
-  .row-image {
-    padding: 40px;
-    width: 280px;
-  }
-
-  .product__image {
-    width: 280px;
-  }
-
-  .product__name {
-    font-size: 18px;
-  }
-
-  .product__delete {
-    width: 30px;
-  }
-
-  .quantity-arrow {
-    height: 28px;
-  }
-
-  .arrow__img {
-    width: 14px;
-  }
-
-  .quantity-input {
-    width: 30px;
-  }
-
-  .product__quantity {
-    width: 100px;
-    height: 40px;
-  }
-
-  .Cart__total {
-    width: 180px;
-    height: 60px;
-  }
-
-  .quantity__text {
-    font-size: 16px;
-  }
-
-  .Cart__checkout {
-    width: 180px;
-    height: 60px;
-  }
-
-  .Cart__footer {
-    margin: 40px 0;
-  }
-}
-
-@media (max-width: 375px) {
-  .Cart__container {
-    width: 370px;
-  }
-
-  .Cart__title {
-    font-size: 18px;
-  }
-
-  .cart-empty {
-    font-size: 20px;
-  }
-  .empty__button {
-    width: 240px;
-    height: 60px;
-    font-size: 18px;
-  }
-
-  .Cart__items {
-    margin-top: 60px;
-  }
-
-  .head__titles {
-    // font-size: 14px;
-    display: none;
-  }
-
-  .row-name {
-    width: 300px;
-  }
-  .row-image {
-    padding: 10px;
-    width: 100px;
-  }
-
-  .product__image {
-    width: 100px;
-  }
-
-  .product__name {
-    font-size: 12px;
-  }
-
-  .product__delete {
-    width: 20px;
-  }
-
-  .quantity-arrow {
-    height: 20px;
-  }
-
-  .arrow__img {
-    width: 10px;
-  }
-
-  .quantity-input {
-    width: 30px;
-  }
-
-  .product__quantity {
-    width: 60px;
-    height: 30px;
-  }
-
-  .Cart__total {
-    width: 150px;
-    height: 50px;
-  }
-
-  .quantity__text {
-    font-size: 14px;
-  }
-
-  .Cart__checkout {
-    width: 150px;
-    height: 50px;
-  }
-
-  .Cart__footer {
-    margin: 40px 0;
-  }
+  text-transform: uppercase;
+  font-weight: 300;
 }

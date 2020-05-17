@@ -122,10 +122,10 @@ class Moduls extends Component {
             <NavLink className="navlink" to="/main/listening">
               <button className="lesson_button" key={modul.lesson.id}>
                 {modul.lesson.name}
-                {/* {!lessons.activated_time ? 
-                  <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, lessons.id);}}>
+                {!modul.lesson.activated_time ? 
+                  <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id);}}>
                   Press To Activate</p> : 
-                <p className="lesson_button__text">Activated Time: {lessons.activated_time}</p>} */}
+                <p className="lesson_button__text">Activated Time: {modul.lesson.activated_time}</p>}
                 <PreviousLessons previous_lesson={modul.previous_lesson} />
               </button>
             </NavLink>

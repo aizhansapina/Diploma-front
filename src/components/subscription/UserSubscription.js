@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Header from "../shared/header/Header.js";
 
 import "../../components/shared/header/Header.scss";
 import "./UserSubscription.scss";
-import SubmenuLayout from "../layouts/submenu-layout/SubmenuLayout.js";
 
 const Active = ({ is_active }) => {
   if (!is_active) {
@@ -64,7 +62,6 @@ class UserSubscription extends Component {
       <div>
         {subscription && (
           <div className="subscription_container" key={subscription.id}>
-            {/* <Subscription key={subscription.id}> */}
             <SubscriptionOwner>{subscription.user.full_name}</SubscriptionOwner>
             <div className="subscription_content">
               <div className="subscription_details">
@@ -125,7 +122,6 @@ class UserSubscription extends Component {
               </div>
             </div>
           </div>
-          //   {/* </Subscription> */}
         )}
       </div>
     );

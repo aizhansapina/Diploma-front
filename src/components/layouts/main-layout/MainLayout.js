@@ -59,7 +59,7 @@ export default class MainLayout extends Component {
           <Route exact path="/main/speaking-writing" component={SandW} />
           <Route exact path="/main/grammar" component={Grammar} />
           <Route exact path="/main/video" component={Video} />
-          <Route exact path="/main/add-quiz/" component={Quiz} />
+          <Route exact path="/main/task/" component={Quiz} />
         </Switch>
       </div>
     );

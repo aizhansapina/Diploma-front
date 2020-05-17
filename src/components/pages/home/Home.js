@@ -63,7 +63,7 @@ export default function Home(props) {
           <h1 className="banner__title">get your ielts course now</h1>
           <button className="banner__button">
             <NavLink
-              className="button__text"
+              className="button__textt"
               to="/main/subscriptions/get_subscriptions/"
             >
               go now

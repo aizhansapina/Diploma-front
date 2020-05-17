@@ -29,7 +29,7 @@ const Writing = (props) => {
           </div>
           <div className="unknown">
             <button className="title_box">Writing Modul # & Lesson #</button>
-            <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
+            <NavLink className="button__add-quiz__link" to="/main/task/">
               <button className="button__add-quiz">
                 Take Quiz for section
               </button>

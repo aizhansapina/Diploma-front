@@ -29,15 +29,6 @@ class SubmenuLayout extends Component {
             <img src={writing} alt={writing} className="submenu__img" />
             <p className="submenu_title">writing</p>
           </NavLink>
-          {/* <NavLink className="sudmenu_link" to="/main/grammar">
-            Bonus (Vocab + Grammar)
-          </NavLink>
-          <NavLink className="sudmenu_link" to="/main/video">
-            Bonus (Video tips)
-          </NavLink>
-          <NavLink className="sudmenu_link" to="/main/speaking-writing">
-            Speaking&Writing Tips
-          </NavLink> */}
           <NavLink className="sudmenu_link" to="/main/grammar">
             <img src={tips} alt={tips} className="submenu__img" />
             <p className="submenu_title">bonus tips</p>
