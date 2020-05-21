@@ -5,11 +5,47 @@ import "./Listening.scss";
 import { Component } from "react";
 import axios from "axios";
 
+const QuestionBlock = ({ question_type, options }) => {
+  switch(question_type){
+    case "READING MULTIPLE CHOICE QUESTIONS":
+      return (
+        options.map((option) =>
+          <div className="reading_multiple">
+          <div className="multiple_option">
+            <input type="checkbox" id="option1" name="option" value="HZ" className="multiple_checkbox"/>
+            <label for="option1" className="multuple_option_label">{option.text}</label>
+          </div>
+      </div>
+        )
+        
+      );
+      break;
+    case "READING TRUE_FALSE_NOT_GIVEN":
+      return <TrueFalseQuestionBlock options = {options}/>;
+      break;
+    default:
+      return <p>defaulttt</p>;
+  }
+};
+
+const TrueFalseQuestionBlock = ({ options }) => {
+  return (
+    <div className="reading_true_false">
+      <select name="options" id="options">
+        { options.map((option) =>
+          <option value="">{option.text}</option>                              
+        )}
+      </select>
+    </div>
+  );
+}
+
 class Listening extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       subscription: "" 
+       subscription: "",
+       lesson_detail: "", 
       };
   }
 
@@ -34,15 +70,83 @@ class Listening extends Component {
         }
         if (error) console.log("error: " + error.response.data);
       });
+
+      axios
+      .get("http://104.248.114.51:8000/module/1/lesson/1/section/LISTENING/get_lesson_detail/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success lesson");
+        this.setState({ lesson_detail: response.data });
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
   }
 
   render() {
     console.log("state", this.state);
     const { subscription } = this.state;
+    const { lesson_detail } = this.state;
+    const { answers } = this.state;
     var date1 = new Date(subscription.end_date); 
     var date2 = new Date(subscription.start_date);
     const diffTime = Math.abs(date2 - date1)
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    console.log("help", lesson_detail.block)
+    let keys = [];
+    if (this.state.lesson_detail !== null) {
+      keys = Object.keys(this.state.lesson_detail)
+      console.log("keys", keys)
+    }
+    let lessons = []
+    let headingMatchBlock = []
+    keys.map(item => {
+      console.log(item)
+      lessons = lesson_detail["block"]
+    })
+    let lessonList = []
+    lessons.map(item => {   
+      lessonList[item.id] = item.questions.map(kil => {
+        return(
+          <div key={kil.id} className="question_types">
+            <p className="question_description">{kil.description}</p>
+            <p className="question_name">{kil.body_text}</p>
+            <button className="question_circle-button">{kil.order}</button>
+            {
+              <QuestionBlock key={kil.id} question_type={kil.question_type} order={kil.order} body_text={kil.body_text} options={kil.options}/>
+            }
+          </div>
+        )
+      })
+    })
+    
+    headingMatchBlock = lessons.filter(lesson => lesson.question_type == "READING MATCHING HEADING QUESTION").map(item => {
+      return(
+        <div key={item.id} className="question_types">
+          {             
+            item.questions.map(question => { 
+              return(
+                <div>
+                  <button className="question_circle-button">{question.order}</button>
+                  <p className="question_name">{question.body_text}</p>                  
+                  <TrueFalseQuestionBlock options = {question.options}/>
+                </div>
+              )              
+            })            
+          }   
+        </div>
+      )
+    })
+    
+    
 
     return (
     <Fragment>
@@ -57,60 +161,51 @@ class Listening extends Component {
             subscription: {subscription.subscription.description_short}
             </h2>
             <h2 className="student_info-moduls">Left: {diffDays} days</h2>
-            <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
+            <h2 className="student_info-moduls">Current: Module 1 Lesson 1</h2>
           </div>
         </div>
         )
       }
-        
+      
       </div>
       <Submenu />
-      <div className="Listening">
+      <div className="Reading">
+      {
+        lesson_detail && (
         <div className="container">
-          <div className="unknown">
-            <button className="title_box">Listening Modul # & Lesson #</button>
-            <NavLink className="button__add-quiz__link" to="/main/add-quiz/">
-              <button className="button__add-quiz">
-                Take Quiz for section
-              </button>
-            </NavLink>
-          </div>
+          <div className="content_container">
+          <button className="title_box_reading">{lesson_detail.section_type} {lesson_detail.module_lesson.module.name} {lesson_detail.module_lesson.lesson.name}</button>
+          {lesson_detail.content.map((item) => (
           <div className="main_content">
-            <div className="introduction_text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </div>
-            <div className="Question">
-              <audio className="listen" controls></audio>
-              <div className="types">
-                <p className="question_types_title">
-                  Types of questions. Listening
-                </p>
-                <ul className="question_list">
-                  <li className="question">Form completion</li>
-                  <li className="question">Note completion</li>
-                  <li className="question">Table completion</li>
-                  <li className="question">Flow-chart completion</li>
-                  <li className="question">Plan labeling</li>
-                  <li className="question">Map labeling</li>
-                  <li className="question">Diagram labeling</li>
-                  <li className="question">Matching</li>
-                  <li className="question">Multiple choices</li>
-                  <li className="question">Sentence completion</li>
-                  <li className="question">Short answer question</li>
-                </ul>
+            <h3 className="content_title">{item.title}</h3>
+            <p className="content_description">{item.description}</p>
+            <audio className="listen" controls ref = "audio" onChange = {this.onTrachChange}>
+            <source src={item.url} />
+            </audio>
+            <div className="reading-introduction_text">{item.text}</div>
+          </div>
+          ))}
+          </div>
+          <div className="task_container">
+          <button className="title_box">Task</button>
+            {lesson_detail.block.map( (block) => (
+            <div className="question-content" key={block.id}>              
+              <h3 className="question_below_description">{block.description}</h3>
+              {/* <p className="content_description">{block.question_type}</p> */}
+              <div className = "question">
+                {
+                 block.question_type != "READING MATCHING HEADING QUESTION" ? lessonList[block.id] : headingMatchBlock                 
+                }
               </div>
             </div>
+            ))}
+              <button type="submit" className="form__button">
+                submit
+              </button>
           </div>
         </div>
+        )
+      }
       </div>
     </Fragment>
   );

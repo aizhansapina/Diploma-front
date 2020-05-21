@@ -15,6 +15,7 @@ import Grammar from "../../content/Grammar/Grammar";
 import Video from "../../content/Video/Video";
 import Lesson from "../../lesson/Lesson";
 import Quiz from "../../quiz/Quiz";
+import Leaderboard from "../../leaderboard/Leaderboard"
 
 export default class MainLayout extends Component {
   constructor(props) {
@@ -60,6 +61,7 @@ export default class MainLayout extends Component {
           <Route exact path="/main/grammar" component={Grammar} />
           <Route exact path="/main/video" component={Video} />
           <Route exact path="/main/task/" component={Quiz} />
+          <Route exact path="/main/leaderboard/" component={Leaderboard} />
         </Switch>
       </div>
     );
