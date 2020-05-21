@@ -35,33 +35,36 @@ const TrueFalseQuestionBlock = ({ options }) => {
     <div className="reading_true_false">
       <select name="options" id="options">
         { options.map((option) =>
-          <option value="">{option.text}</option>
+          <option value="">{option.text}</option>                              
         )}
       </select>
     </div>
   );
 }
 
-// const HeadingQuestionBlock = ({ questions }) => {
-//   return (
-//     <div className="reading_true_false">
-//       <select name="options" id="options">
-//         { options.map((option) =>
-//           <option value="">{option.text}</option>
-//         )}
-//       </select>
-//     </div>
-//   );
-// }
-
 class Reading extends Component {
   constructor(props) {
     super(props);
     this.state = {
        subscription: "",
-       lesson_detail: ""
+       lesson_detail: "",       
+       questionId: ""
       };
   }
+ 
+  // handleDropDownChange = (event) => { 
+  //   let value = event.target.value
+  //   let lessons = lessons.map(lesson => {
+  //     let questions = lesson.questions.map(question => { 
+  //       let options = question.options.map(option => {
+  //         if (option.text === value) {           
+  //           // save question id here           
+  //         }
+  //       })
+  //     })
+  //   })
+  //   console.log("answers: " + this.answers)
+  // }
 
   componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
@@ -109,6 +112,7 @@ class Reading extends Component {
     console.log("state", this.state);
     const { subscription } = this.state;
     const { lesson_detail } = this.state;
+    const { answers } = this.state;
     var date1 = new Date(subscription.end_date); 
     var date2 = new Date(subscription.start_date);
     const diffTime = Math.abs(date2 - date1)
@@ -158,6 +162,7 @@ class Reading extends Component {
         </div>
       )
     })
+    
     
 
     return (
@@ -210,7 +215,7 @@ class Reading extends Component {
             </div>
             ))}
               <button type="submit" className="form__button">
-                SUBMit
+                submit
               </button>
           </div>
         </div>
