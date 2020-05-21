@@ -174,7 +174,7 @@ class Listening extends Component {
         lesson_detail && (
         <div className="container">
           <div className="content_container">
-          <button className="title_box_reading">{lesson_detail.section_type} {lesson_detail.module_lesson.module.name} {lesson_detail.module_lesson.lesson.name}</button>
+          <button className="title_box_listening">{lesson_detail.section_type} {lesson_detail.module_lesson.module.name} {lesson_detail.module_lesson.lesson.name}</button>
           {lesson_detail.content.map((item) => (
           <div className="main_content">
             <h3 className="content_title">{item.title}</h3>
@@ -185,9 +185,7 @@ class Listening extends Component {
             <div className="reading-introduction_text">{item.text}</div>
           </div>
           ))}
-          </div>
-          <div className="task_container">
-          <button className="title_box">Task</button>
+                    <button className="title_box-task_listening">Task</button>
             {lesson_detail.block.map( (block) => (
             <div className="question-content" key={block.id}>              
               <h3 className="question_below_description">{block.description}</h3>
