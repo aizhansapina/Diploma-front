@@ -1,96 +1,128 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
+import { Component } from "react";
+import axios from "axios";
+import Input from "../../shared/input/Input";
+import "../../quiz/Quiz.scss";
 import "./Speaking.scss";
 
-const Speaking = (props) => {
-  return (
+class Speaking extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+       subscription: "",
+       lesson_detail: ""
+      };
+  }
+
+  componentDidMount() {
+    const token = "JWT " + sessionStorage.getItem("token");
+
+      axios
+      .get("http://104.248.114.51:8000/user_subscription/get_subscription/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success");
+        this.setState({ subscription: response.data });
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
+
+      axios
+      .get("http://104.248.114.51:8000/module/1/lesson/1/section/SPEAKING/get_lesson_detail/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success lesson");
+        this.setState({ lesson_detail: response.data });
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
+  }
+
+  render() {
+    console.log("state", this.state);
+    const { subscription } = this.state;
+    const { lesson_detail } = this.state;
+    var date1 = new Date(subscription.end_date); 
+    var date2 = new Date(subscription.start_date);
+    const diffTime = Math.abs(date2 - date1)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    console.log("help", lesson_detail.block)
+    let keys = [];
+    if (this.state.lesson_detail !== null) {
+      keys = Object.keys(this.state.lesson_detail)
+      console.log("keys", keys)
+    }
+    let lessons = []
+    keys.map(item => {
+      console.log(item)
+      lessons = lesson_detail["block"]
+    })
+    return (
     <Fragment>
-      <div className="student_info">
-        <h1 className="student_info-fullname">
-          Name Surname (Standard/ Premium/ VIP)
-        </h1>
-        <h2 className="student_info-moduls">Left: # days</h2>
-        <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
-        <h2 className="student_info-moduls">
-          Next Lesson after: hours/minutes/seconds
-        </h2>
-      </div>
-      <Submenu />
-      <div className="Writing">
-        <div className="container">
-          <div className="student_data">
-            <h1 className="student_name">{props.name}</h1>
-            <div className="course_data">
-              <p className="day">{props.days}</p>
-              <p className="next_lesson">{props.lesson}</p>
-              <h2 className="module">{props.module}</h2>
-            </div>
-          </div>
-          <div className="unknown">
-            <button className="title_box">Speaking Modul # & Lesson #</button>
-            <NavLink className="button__add-quiz__link" to="/main/task/">
-              <button className="button__add-quiz">
-                Take Quiz for section
-              </button>
-            </NavLink>
-          </div>
-          <div className="main_content">
-            <div className="speaking_title">
-              <h3 className="content_title">PArt 1</h3>
-              <p className="content_description">Introduction and Interview</p>
-            </div>
-            <div className="introduction_text">
-              <div className="question_cont">
-                <button className="question_circle-button">1</button>
-                <p className="speaking_question">Moving on to Food, let's talk about food. What kind of food do you like?</p>
-              </div>
-              <div className="question_cont">
-                <button className="question_circle-button">2</button>
-                <p className="speaking_question">What are typical foods in your country?</p>
-              </div>
-              <div className="question_cont">
-                <button className="question_circle-button">3</button>
-                <p className="speaking_question">Is cooking a man's or woman's job?</p>
-              </div>
-              <div className="question_cont">
-                <button className="question_circle-button">4</button>
-                <p className="speaking_question">How do you like foreign food?</p>
-              </div>
-            </div>
-            <div className="speaking_title">
-              <h3 className="content_title">PArt 2</h3>
-              <p className="content_description">Topic</p>
-            </div>
-            <div className="introduction_text">
-            <div className="question_cont"> 
-              <button className="question_circle-button">1</button>
-              <p className="speaking_question">Describe a well-paid job you would like to do/you will be good at in the future. You should say: what the job is what qualifications are required for this job how this job is different than other jobs and explain why you would like to be good at this job.</p>
-            </div>
-            </div>
-            <div className="speaking_title">
-              <h3 className="content_title">PArt 3</h3>
-              <p className="content_description">Topic Discussion</p>
-            </div>
-            <div className="introduction_text">
-            <div className="question_cont">
-            <button className="question_circle-button">1</button>
-              <p className="speaking_question">What kind of jobs are poorly-paid in your country?</p>
-            </div>
-            <div className="question_cont">
-              <button className="question_circle-button">2</button>
-              <p className="speaking_question">Do people who have different levels of income feel happy about how much they earn?</p>
-            </div>
-            <div className="question_cont">
-              <button className="question_circle-button">3</button>
-              <p className="speaking_question">Do you think it is good to change jobs frequently?</p>
-            </div>
-            </div>
+      <div> { 
+        subscription && (
+          <div className="moduls_content">
+          <div className="moduls__student_info">
+            <h1 className="student_info-fullname">
+            Student: { subscription.user.full_name }
+            </h1>
+            <h2 className="student_info-moduls">
+            subscription: {subscription.subscription.description_short}
+            </h2>
+            <h2 className="student_info-moduls">Left: {diffDays} days</h2>
+            <h2 className="student_info-moduls">Current: Module 1 Lesson 1</h2>
           </div>
         </div>
+        )
+      }
+      </div>
+      <Submenu />
+      <div className="Speaking">
+      {
+        lesson_detail && (
+        <div className="container">
+          <div className="speaking-content_container">
+          <button className="title_box_speaking">{lesson_detail.section_type} {lesson_detail.module_lesson.module.name} {lesson_detail.module_lesson.lesson.name}</button>
+          {lesson_detail.content.map((item) => (
+          <div className="speaking-main_content">
+            <h3 className="content_title">{item.title}</h3>
+            <p className="content_description">{item.description}</p>
+            <img src={item.url} className="content_img"/>
+            <div className="speaking-introduction_text">{item.text.replace(/[\r\n]+/g, "\n")}</div>
+          </div>
+          ))}
+            <button type="submit" className="form__button">
+                Upload my answer
+            </button>
+          </div>
+        </div>
+        )
+      }
       </div>
     </Fragment>
   );
-};
+
+  }
+}
 
 export default Speaking;

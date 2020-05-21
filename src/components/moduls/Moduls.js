@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { NavLink, withRouter } from "react-router-dom";
+import Modal from "../moduls/modal/ModalWindow";
 
 import "../../components/shared/header/Header.scss";
 import "./Moduls.scss";
@@ -28,9 +29,16 @@ class Moduls extends Component {
     super(props);
     this.state = {
        moduls: [],
-       subscription: "" 
+       subscription: "",
+       show: false
       };
   }
+
+  showModal = () => {
+    this.setState({
+      show: true
+    });
+  };
 
   handleClick = (moduleId, lessonId) => {
     fetch(
@@ -114,23 +122,25 @@ class Moduls extends Component {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
     let modulList = moduls.map((modul) => {
       return (
-        <div className="modul" key={modul.id}>
-          <h3 className="modul_title" key={modul.module.id}>
-            {modul.module.name}
-          </h3>
-          <div className="modul_lessons">
-            <NavLink className="navlink" to="/main/listening">
-              <button className="lesson_button" key={modul.lesson.id}>
-                {modul.lesson.name}
-                {!modul.lesson.activated_time ? 
-                  <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id);}}>
-                  Press To Activate</p> : 
-                <p className="lesson_button__text">Activated Time: {modul.lesson.activated_time}</p>}
-                <PreviousLessons previous_lesson={modul.previous_lesson} />
-              </button>
-            </NavLink>
+        <>
+          <div className="modul" key={modul.id}>
+            <h3 className="modul_title" key={modul.module.id}>
+              {modul.module.name}
+            </h3>
+            <div className="modul_lessons">
+              <NavLink className="navlink" to="/main/listening">
+                <button className="lesson_button" key={modul.lesson.id}>
+                  {modul.lesson.name}
+                  {!modul.lesson.activated_time ? 
+                    <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id); this.showModal();}}>
+                    Press To Activate</p> : 
+                  <p className="lesson_button__text">Activated Time: {modul.lesson.activated_time}</p>}
+                  <PreviousLessons previous_lesson={modul.previous_lesson} />
+                </button>
+              </NavLink>
+            </div>
           </div>
-        </div>
+        </>
       );
     });
 
@@ -148,6 +158,7 @@ class Moduls extends Component {
             <h2 className="student_info-moduls">Left: {diffDays} days</h2>
             <h2 className="student_info-moduls">Current: Module # Lesson #</h2>
           </div>
+          {/* <Modal show={this.state.show}/> */}
           <div className="moduls_list">{modulList}</div>
         </div>
         )
@@ -158,3 +169,4 @@ class Moduls extends Component {
   }
 }
 export default Moduls;
+

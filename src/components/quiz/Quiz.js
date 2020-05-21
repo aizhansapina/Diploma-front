@@ -127,8 +127,7 @@ class Quiz extends Component {
             </div>
           </div>
         )
-      })
-      
+      })  
     })
 
     return (

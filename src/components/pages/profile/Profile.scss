@@ -13,21 +13,44 @@
   margin: 30px auto;
 }
 
+.subscription_container {
+  border: 1px solid #f39fdc;
+  margin: 40px auto;
+  padding: 20px;
+  width: 80%;
+}
+
+.subscription-container_title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
 .empty-button__text {
   text-decoration: none;
   color: #fff;
 }
 
 .badges_container {
-  width: 90%;
+  width: 83%;
   margin: 20px auto;
+  border: 1px solid #9ab5e1;
+}
+
+.achievements {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 20px;
 }
 
 .badge {
   display: inline-block;
-  width: 200px;
+  width: 160px;
   text-align: center;
-  margin: 25px;
+  margin: 40px 37px;
 }
 
 .badge_image {

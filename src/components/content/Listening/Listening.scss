@@ -20,7 +20,7 @@
 }
 
 .title_box {
-  width: 40%;
+  width: 400px;
   background-color: #f39fdc;
   height: 50px;
   text-align: center;
@@ -32,8 +32,8 @@
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  display: inline-block;
-  margin-right: 400px;
+  display: block;
+  margin-left: 100px;
 }
 
 .title_box:hover {
