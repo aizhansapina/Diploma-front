@@ -24,9 +24,6 @@ const QuestionBlock = ({ question_type, options }) => {
     case "LISTENING NOTE COMPLETION":
      return(
       <div className="form__input">
-      <button className="question_circle-button">
-        {/* {item.id} */}
-      </button>
       <Input
         name="answer"
         type="text"
@@ -42,9 +39,6 @@ const QuestionBlock = ({ question_type, options }) => {
     case "LISTENING SENTENCE COMPLETION":
       return(
         <div className="form__input">
-      <button className="question_circle-button">
-        {/* {item.id} */}
-      </button>
       <Input
         name="answer"
         type="text"
@@ -222,7 +216,7 @@ class Listening extends Component {
           <div className="main_content">
             <h3 className="content_title">{item.title}</h3>
             <p className="content_description">{item.description}</p>
-            <img src={item.image_url} className="content_img"/>
+            <img src={item.image_url} className="content_img_listening"/>
             <audio className="listen" controls ref = "audio" onChange = {this.onTrachChange}>
             <source src={item.url} />
             </audio>
@@ -233,7 +227,7 @@ class Listening extends Component {
             {lesson_detail.block.map( (block) => (
             <div className="question-content" key={block.id}>              
               <h3 className="question_below_description">{block.description}</h3>
-              <img src={block.image_url} className="content_img"/>
+              <img src={block.image_url} className="content_img_listening"/>
               {/* <p className="content_description">{block.question_type}</p> */}
               <div className = "question">
                 {
