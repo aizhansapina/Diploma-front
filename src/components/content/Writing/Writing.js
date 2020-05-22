@@ -61,7 +61,7 @@ class Writing extends Component {
   }
 
   handleClick = () => {
-    sessionStorage.setItem("boardId", 2)
+    sessionStorage.setItem("boardId", 3)
     this.props.history.push("/main/leaderboard/")
   }
 

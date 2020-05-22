@@ -124,7 +124,7 @@ class Listening extends Component {
       });
   }
   handleClick = () => {
-    sessionStorage.setItem("boardId", 3)
+    sessionStorage.setItem("boardId", 2)
     this.props.history.push("/main/leaderboard/")
   }
 

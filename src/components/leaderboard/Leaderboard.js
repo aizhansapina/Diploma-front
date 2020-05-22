@@ -38,11 +38,11 @@ class Leaderboard extends Component {
 
    renderTableData() {
     return this.state.students.map((student, index) => {
-       const { id, email, score, time } = student //destructuring
+       const { id, user, score, time } = student //destructuring
        return (
-          <tr key={id}>
-             <td>{id+1}</td>
-             <td>{email}</td>
+          <tr key={index}>
+             <td>{index+1}</td>
+             <td>{user.email}</td>
              <td>{score}</td>
              <td>{time}</td>
           </tr>
