@@ -7,15 +7,16 @@ class Leaderboard extends Component {
    constructor(props) {
       super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
       this.state = { //state is by default an object
+         boardId: sessionStorage.getItem("boardId"),
          students: []
       }
    }
 
    componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
-
+     
       axios
-      .get("http://104.248.114.51:8000/task/1/get_leaderboard/", {
+      .get("http://104.248.114.51:8000/task/"+ this.state.boardId +"/get_leaderboard/", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./Video.scss";
-
+import ReactPlayer from 'react-player';
 const Video = (props) => {
   return (
     <Fragment>
@@ -43,20 +43,26 @@ const Video = (props) => {
               </button>
             </NavLink>
           </div>
-          <div className="main_content">
-            <div className="introduction_text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+          <div className = "speaking-content_container">
+          <div className="content_title">
+          IELTS video lessons and tips
+            <div className="content_description">
+            Prepare for the IELTS test with our video lessons that give you an explanation of the test and also tips, strategies and advice to improve your chances of success in IELTS.
+
+They explain the aspects of fluency and coherence, lexis and vocabulary, grammar and pronunciation that are considered during assessment.
             </div>
+            <div>
+        <ReactPlayer
+          url='https://www.youtube.com/watch?v=Zx-JcXsbUqQ'
+          className='react-player'
+          playing
+          width='100%'
+          height='100%'
+        />
+      </div>
           </div>
+          </div>
+          
         </div>
       </div>
     </Fragment>

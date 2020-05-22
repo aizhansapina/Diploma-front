@@ -43,19 +43,15 @@ const Grammar = (props) => {
               </button>
             </NavLink>
           </div>
-          <div className="main_content">
-            <div className="introduction_text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+          <div className = "speaking-content_container">
+          <div className="content_title">
+          Grammar for IELTS
+            <div className="content_description">
+            In the IELTS test, Grammar is awarded a separate band score in both the Speaking and Writing modules. You are assessed on your ability to use correct and appropriate grammar and on the range of sentence types that you produce. Even simple sentences need to be written accurately but in order to raise your score above Band 4, you also need to be able to show that you can use some complex sentence types and have an understanding of the relevant tenses and structures.
             </div>
+            <div>
+      </div>
+          </div>
           </div>
         </div>
       </div>

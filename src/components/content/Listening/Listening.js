@@ -4,10 +4,11 @@ import Submenu from "../../layouts/submenu-layout/SubmenuLayout";
 import "./Listening.scss";
 import { Component } from "react";
 import axios from "axios";
+import Input from "../../shared/input/Input";
 
 const QuestionBlock = ({ question_type, options }) => {
   switch(question_type){
-    case "READING MULTIPLE CHOICE QUESTIONS":
+    case "LISTENING MULTIPLE CHOICE QUESTIONS":
       return (
         options.map((option) =>
           <div className="reading_multiple">
@@ -19,6 +20,42 @@ const QuestionBlock = ({ question_type, options }) => {
         )
         
       );
+      break;
+    case "LISTENING NOTE COMPLETION":
+     return(
+      <div className="form__input">
+      <button className="question_circle-button">
+        {/* {item.id} */}
+      </button>
+      <Input
+        name="answer"
+        type="text"
+        // onChange={this.setFormField}
+        className="answer__input"
+        placeholder="Answer"
+        autocomplete="off"
+      />
+      <span className="form__underline"></span>
+    </div>
+     )
+     break;
+    case "LISTENING SENTENCE COMPLETION":
+      return(
+        <div className="form__input">
+      <button className="question_circle-button">
+        {/* {item.id} */}
+      </button>
+      <Input
+        name="answer"
+        type="text"
+        // onChange={this.setFormField}
+        className="answer__input"
+        placeholder="Answer"
+        autocomplete="off"
+      />
+      <span className="form__underline"></span>
+    </div>
+      )
       break;
     case "READING TRUE_FALSE_NOT_GIVEN":
       return <TrueFalseQuestionBlock options = {options}/>;
@@ -44,6 +81,8 @@ class Listening extends Component {
   constructor(props) {
     super(props);
     this.state = {
+       moduleId: sessionStorage.getItem("moduleID"),
+       lessonId: sessionStorage.getItem("lessonID"),
        subscription: "",
        lesson_detail: "", 
       };
@@ -72,7 +111,7 @@ class Listening extends Component {
       });
 
       axios
-      .get("http://104.248.114.51:8000/module/1/lesson/1/section/LISTENING/get_lesson_detail/", {
+      .get("http://104.248.114.51:8000/module/"+ this.state.moduleId +"/lesson/"+ this.state.lessonId +"/section/LISTENING/get_lesson_detail/", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -89,6 +128,10 @@ class Listening extends Component {
         }
         if (error) console.log("error: " + error.response.data);
       });
+  }
+  handleClick = () => {
+    sessionStorage.setItem("boardId", 3)
+    this.props.history.push("/main/leaderboard/")
   }
 
   render() {
@@ -128,7 +171,7 @@ class Listening extends Component {
       })
     })
     
-    headingMatchBlock = lessons.filter(lesson => lesson.question_type == "READING MATCHING HEADING QUESTION").map(item => {
+    headingMatchBlock = lessons.filter(lesson => lesson.question_type == "LISTENING PLAN LABELLING").map(item => {
       return(
         <div key={item.id} className="question_types">
           {             
@@ -179,6 +222,7 @@ class Listening extends Component {
           <div className="main_content">
             <h3 className="content_title">{item.title}</h3>
             <p className="content_description">{item.description}</p>
+            <img src={item.image_url} className="content_img"/>
             <audio className="listen" controls ref = "audio" onChange = {this.onTrachChange}>
             <source src={item.url} />
             </audio>
@@ -189,15 +233,16 @@ class Listening extends Component {
             {lesson_detail.block.map( (block) => (
             <div className="question-content" key={block.id}>              
               <h3 className="question_below_description">{block.description}</h3>
+              <img src={block.image_url} className="content_img"/>
               {/* <p className="content_description">{block.question_type}</p> */}
               <div className = "question">
                 {
-                 block.question_type != "READING MATCHING HEADING QUESTION" ? lessonList[block.id] : headingMatchBlock                 
+                 block.question_type != "LISTENING PLAN LABELLING" ? lessonList[block.id] : headingMatchBlock                 
                 }
               </div>
             </div>
             ))}
-              <button type="submit" className="form__button">
+              <button type="submit" className="form__button" onClick = {this.handleClick}>
                 submit
               </button>
           </div>

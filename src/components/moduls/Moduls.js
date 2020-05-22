@@ -112,6 +112,11 @@ class Moduls extends Component {
       });
   }
 
+  buttonClick = (moduleId, lessonId) => {
+    sessionStorage.setItem("moduleID", moduleId)
+    sessionStorage.setItem("lessonID", lessonId)
+  }
+
   render() {
     console.log("state", this.state);
     const { moduls } = this.state;
@@ -129,7 +134,9 @@ class Moduls extends Component {
             </h3>
             <div className="modul_lessons">
               <NavLink className="navlink" to="/main/listening">
-                <button className="lesson_button" key={modul.lesson.id}>
+                <button className="lesson_button" key={modul.lesson.id} onClick={() => {
+                this.buttonClick(modul.module.id, modul.lesson.id);
+              }}>
                   {modul.lesson.name}
                   {!modul.lesson.activated_time ? 
                     <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id); this.showModal();}}>
