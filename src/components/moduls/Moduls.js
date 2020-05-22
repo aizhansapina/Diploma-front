@@ -125,31 +125,85 @@ class Moduls extends Component {
     var date2 = new Date(subscription.start_date);
     const diffTime = Math.abs(date2 - date1)
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    let modulList = moduls.map((modul) => {
+    
+    let newModules = moduls.map((modul) => {
+      return modul.module
+    })    
+    var flags = [], uniqueModules = [], l = newModules.length, i;
+    for( i=0; i<l; i++) {
+      if( flags[newModules[i].id]) continue;
+      flags[newModules[i].id] = true;
+      uniqueModules.push(newModules[i]);
+    } 
+    
+    let groupedLessons = []
+    uniqueModules.map((uniqueMod) => {
+      let lessons = []
+      moduls.map((modul) => {
+        if (uniqueMod.id == modul.module.id) {
+          lessons.push(modul.lesson)
+        }
+      })
+      groupedLessons[uniqueMod.id] = lessons
+    })
+    console.log("uniqueModules" + uniqueModules)
+    console.log("groupedLessons" + groupedLessons)
+
+    let modulList = uniqueModules.map((module) => {
       return (
-        <>
-          <div className="modul" key={modul.id}>
-            <h3 className="modul_title" key={modul.module.id}>
-              {modul.module.name}
+         <div className="modul">
+            <h3 className="modul_title" key={module.id}>
+              {module.name}
             </h3>
-            <div className="modul_lessons">
-              <NavLink className="navlink" to="/main/listening">
-                <button className="lesson_button" key={modul.lesson.id} onClick={() => {
-                this.buttonClick(modul.module.id, modul.lesson.id);
-              }}>
-                  {modul.lesson.name}
-                  {!modul.lesson.activated_time ? 
-                    <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id); this.showModal();}}>
-                    Press To Activate</p> : 
-                  <p className="lesson_button__text">Activated Time: {modul.lesson.activated_time}</p>}
-                  <PreviousLessons previous_lesson={modul.previous_lesson} />
-                </button>
-              </NavLink>
-            </div>
+            {
+              groupedLessons[module.id].map((lesson) => {
+                return(
+                  <div className="modul_lessons">
+                    <NavLink className="navlink" to="/main/listening">
+                    <button className="lesson_button" key={lesson.id} onClick={() => {
+                      this.buttonClick(module.id, lesson.id);
+                    }}>
+                    {lesson.name}
+                    {!lesson.activated_time ? 
+                      <p className="lesson_button__text--red" onClick={() => { this.handleClick(module.id, lesson.id); this.showModal();}}>
+                      Press To Activate</p> : 
+                      <p className="lesson_button__text">Activated Time: {lesson.activated_time}</p>}
+                    {/* <PreviousLessons previous_lesson={previous_lesson} /> */}
+                    </button>
+                    </NavLink>
+                  </div>
+                )
+              })
+            }            
           </div>
-        </>
       );
-    });
+    })
+
+    // let modulList = moduls.map((modul) => {
+    //   return (
+    //     <>
+    //       <div className="modul" key={modul.id}>
+    //         <h3 className="modul_title" key={modul.module.id}>
+    //           {modul.module.name}
+    //         </h3>
+    //         <div className="modul_lessons">
+    //           <NavLink className="navlink" to="/main/listening">
+    //             <button className="lesson_button" key={modul.lesson.id} onClick={() => {
+    //             this.buttonClick(modul.module.id, modul.lesson.id);
+    //           }}>
+    //               {modul.lesson.name}
+    //               {!modul.lesson.activated_time ? 
+    //                 <p className="lesson_button__text--red" onClick={() => { this.handleClick(modul.module.id, modul.lesson.id); this.showModal();}}>
+    //                 Press To Activate</p> : 
+    //               <p className="lesson_button__text">Activated Time: {modul.lesson.activated_time}</p>}
+    //               <PreviousLessons previous_lesson={modul.previous_lesson} />
+    //             </button>
+    //           </NavLink>
+    //         </div>
+    //       </div>
+    //     </>
+    //   );
+    // });
 
     return (
       <div> { 
