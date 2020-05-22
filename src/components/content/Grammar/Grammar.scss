@@ -25,3 +25,30 @@
 .button__to_bonus:hover {
   background-image: linear-gradient(315deg, #9ab5e1 0%, #f39fdc 74%);
 }
+
+.grammarrr {
+  width: 70%;
+  margin: 50px auto;
+
+}
+
+.grammar-container {
+}
+
+.grammar-content_container {
+  padding: 50px;
+  margin-bottom: 150px;
+  border: 1px solid #9ab5e1; 
+  width: 80%;
+  margin: auto;
+}
+
+.content_description-grammar {
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  text-align: left;
+  padding: 50px;
+}

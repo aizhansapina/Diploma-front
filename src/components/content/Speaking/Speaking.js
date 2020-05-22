@@ -11,6 +11,8 @@ class Speaking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+       moduleId: sessionStorage.getItem("moduleID"),
+       lessonId: sessionStorage.getItem("lessonID"),
        subscription: "",
        lesson_detail: ""
       };
@@ -39,7 +41,7 @@ class Speaking extends Component {
       });
 
       axios
-      .get("http://104.248.114.51:8000/module/1/lesson/1/section/SPEAKING/get_lesson_detail/", {
+      .get("http://104.248.114.51:8000/module/"+ this.state.moduleId +"/lesson/"+ this.state.lessonId +"/section/SPEAKING/get_lesson_detail/", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -56,6 +58,11 @@ class Speaking extends Component {
         }
         if (error) console.log("error: " + error.response.data);
       });
+  }
+
+  handleClick = () => {
+    sessionStorage.setItem("boardId", 2)
+    this.props.history.push("/main/leaderboard/")
   }
 
   render() {
@@ -111,7 +118,7 @@ class Speaking extends Component {
             <div className="speaking-introduction_text">{item.text.replace(/[\r\n]+/g, "\n")}</div>
           </div>
           ))}
-            <button type="submit" className="form__button">
+            <button type="submit" className="form__button" onClick = {this.handleClick}>
                 Upload my answer
             </button>
           </div>

@@ -25,6 +25,35 @@ const QuestionBlock = ({ question_type, options }) => {
     case "READING TRUE_FALSE_NOT_GIVEN":
       return <TrueFalseQuestionBlock options = {options}/>;
       break;
+    case "READING SHORT ANSWER QUESTION":
+      return (
+        <div className="form__input">
+            <Input
+              name="answer"
+              type="text"
+              // onChange={this.setFormField}
+              className="reading_answer__input"
+              placeholder="Answer"
+              autocomplete="off"
+             />
+             <span className="form__underline"></span>
+        </div>
+      );
+      break;
+    case "READING SENTENCE COMPLETION":
+      return (
+        <div className="form__input">
+          <Input
+            name="answer"
+            type="text"
+            // onChange={this.setFormField}
+            className="reading_answer__input"
+            placeholder="Answer"
+            autocomplete="off"
+          />
+         <span className="form__underline"></span>
+    </div>
+      );
     default:
       return <p>defaulttt</p>;
   }
@@ -33,7 +62,7 @@ const QuestionBlock = ({ question_type, options }) => {
 const TrueFalseQuestionBlock = ({ options }) => {
   return (
     <div className="reading_true_false">
-      <select name="options" id="options">
+      <select name="options" id="options" className="reading_true-false_dropdown">
         { options.map((option) =>
           <option value="">{option.text}</option>                              
         )}
@@ -46,6 +75,8 @@ class Reading extends Component {
   constructor(props) {
     super(props);
     this.state = {
+       moduleId: sessionStorage.getItem("moduleID"),
+       lessonId: sessionStorage.getItem("lessonID"),
        subscription: "",
        lesson_detail: "",       
        questionId: ""
@@ -65,6 +96,11 @@ class Reading extends Component {
   //   })
   //   console.log("answers: " + this.answers)
   // }
+
+  handleClick = () => {
+    sessionStorage.setItem("boardId", 1)
+    this.props.history.push("/main/leaderboard/")
+  }
 
   componentDidMount() {
     const token = "JWT " + sessionStorage.getItem("token");
@@ -89,7 +125,7 @@ class Reading extends Component {
       });
 
       axios
-      .get("http://104.248.114.51:8000/module/1/lesson/1/section/READING/get_lesson_detail/", {
+      .get("http://104.248.114.51:8000/module/"+ this.state.moduleId +"/lesson/"+ this.state.lessonId +"/section/READING/get_lesson_detail/", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -136,10 +172,12 @@ class Reading extends Component {
           <div key={kil.id} className="question_types">
             <p className="question_description">{kil.description}</p>
             <p className="question_name">{kil.body_text}</p>
-            <button className="question_circle-button">{kil.order}</button>
-            {
-              <QuestionBlock key={kil.id} question_type={kil.question_type} order={kil.order} body_text={kil.body_text} options={kil.options}/>
-            }
+            <div className="reading_question-button-order_question-block">
+              <button className="reading_question_circle-button">{kil.order}</button>
+              {
+                <QuestionBlock key={kil.id} question_type={kil.question_type} order={kil.order} body_text={kil.body_text} options={kil.options}/>
+              }
+            </div>
           </div>
         )
       })
@@ -151,10 +189,12 @@ class Reading extends Component {
           {             
             item.questions.map(question => { 
               return(
-                <div>
-                  <button className="question_circle-button">{question.order}</button>
-                  <p className="question_name">{question.body_text}</p>                  
-                  <TrueFalseQuestionBlock options = {question.options}/>
+                <div className="reading_question_content">
+                    <p className="question_name">{question.body_text}</p>    
+                    <div className="reading_question-name-order">  
+                      <button className="reading_question_circle-button">{question.order}</button>
+                      <TrueFalseQuestionBlock options = {question.options}/>
+                    </div> 
                 </div>
               )              
             })            
@@ -214,7 +254,7 @@ class Reading extends Component {
               </div>
             </div>
             ))}
-              <button type="submit" className="form__button">
+              <button type="submit" className="form__button" onClick = {this.handleClick}>
                 submit
               </button>
           </div>

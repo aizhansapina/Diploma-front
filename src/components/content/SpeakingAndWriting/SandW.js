@@ -18,7 +18,7 @@ const SandW = (props) => {
       </div>
       <Submenu />
       <div className="Writing">
-        <div className="container">
+        <div className="grammar-container">
           <div className="student_data">
             <h1 className="student_name">{props.name}</h1>
             <div className="course_data">
@@ -27,7 +27,7 @@ const SandW = (props) => {
               <h2 className="module">{props.module}</h2>
             </div>
           </div>
-          <div className="unknown">
+          <div className="grammarrr">
             <NavLink className="button__add-quiz__link" to="/main/grammar/">
               <button className="button__to_bonus">Grammar Bonus</button>
             </NavLink>
@@ -43,11 +43,11 @@ const SandW = (props) => {
               </button>
             </NavLink>
           </div>
-          <div className="feedback_section">
+          <div className="feedback_section-sw">
             <button className="feedback">Speaking</button>
             <button className="feedback">Writing</button>
           </div>
-          <div className="main_content">
+          <div className="main_content-sw">
             <h3 classname="introduction_title">Recommendations</h3>
             <div>
               <p className="introduction_text">

@@ -26,13 +26,52 @@ const Subscription = ({ id }) => {
   return <div className="subscription_container" key={id} />;
 };
 
+const Badge = ({completed, id, task}) => {
+  if (completed == true) {
+    return (
+      <div className="badge" key={id}>
+        <img src={active_badge} className="badge_image"/>
+        <p className="badge_title">{task}</p>
+        <p className="badge_subtitle-done">completed</p>
+      </div>
+    );
+  }
+  return (
+    <div className="badge"  key={id}>
+      <img src={inactive_badge} className="badge_image"/>
+      <p className="badge_title">{task}</p>
+      <p className="badge_subtitle">keep going</p>
+    </div>
+  );
+}
+
+const ActiveBadge = ({ active_completed, active_task, task }) => {
+  if(active_completed == true) {
+    return (
+      <>
+        <img src={active_badge} className="badge_image"/>
+        <p className="badge_title">{active_task}</p>
+        <p className="badge_subtitle-done">completed</p>
+      </>
+    );
+  }
+  return (
+    <>
+      <img src={inactive_badge} className="badge_image"/>
+      <p className="badge_title">{task}</p>
+      <p className="badge_subtitle">keep going</p>
+    </>
+  );
+}
+
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       subscription: null,
       badges: [],
-      rewards: []
+      rewards: [],
+      active_badges: []
      };
   }
 
@@ -78,6 +117,25 @@ class Profile extends Component {
       });
 
       axios
+      .get("http://104.248.114.51:8000/profile/badges/get_active_badges/", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log("success");
+        this.setState({ active_badges: response.data });
+      })
+      .catch((error) => {
+        if (error.response.status == 400) {
+          console.log("issa bad request");
+        }
+        if (error) console.log("error: " + error.response.data);
+      });
+
+      axios
       .get("http://104.248.114.51:8000/profile/rewards/", {
         headers: {
           Accept: "application/json",
@@ -100,9 +158,12 @@ class Profile extends Component {
   render() {
     console.log(localStorage.getItem("token"));
     console.log(this.state.subscription);
+    // console.log(active_badges, "moonlihght");
     const { subscription } = this.state;
     const { badges } = this.state;
     const { rewards } = this.state;
+    const { active_badges } = this.state;
+    console.log(active_badges, "moonlihght");
     return (
       <>
         <div className="profile_container">
@@ -184,18 +245,9 @@ class Profile extends Component {
       <>
           <div className="badges_container">
             <h2 className="achievements">Achievements</h2>
-            { badges.map((badge) =>
-            <div className="badge" key={badge.id}>
-              <img src={active_badge} className="badge_image"/>
-              <p className="badge_title">{badge.task}</p>
-              <p className="badge_subtitle-done">completed</p>
-            </div>
+            { active_badges.map((badge) =>
+              <Badge completed={badge.completed} id={badge.badge.id} task={badge.badge.task}/>
             )}
-            <div className="badge">
-              <img src={inactive_badge} className="badge_image"/>
-              <p className="badge_title">7.0 points in academic test</p>
-              <p className="badge_subtitle">keep going</p>
-            </div>
           </div>
         </>
           <div className="badges_container">
@@ -204,7 +256,7 @@ class Profile extends Component {
             <div className="badge" key={reward.id}>
             <img src={prize} className="badge_image"/>
             <p className="prize_title">Congratulations!</p>
-          <p className="prize_subtitle">{reward.text}</p>
+            <p className="prize_subtitle">{reward.reward.text}</p>
             </div>
           )}
           </div>

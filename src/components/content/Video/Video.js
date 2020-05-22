@@ -18,7 +18,7 @@ const Video = (props) => {
       </div>
       <Submenu />
       <div className="Writing">
-        <div className="container">
+        <div className="grammar-containe">
           <div className="student_data">
             <h1 className="student_name">{props.name}</h1>
             <div className="course_data">
@@ -27,7 +27,7 @@ const Video = (props) => {
               <h2 className="module">{props.module}</h2>
             </div>
           </div>
-          <div className="unknown">
+          <div className="grammarrr">
             <NavLink className="button__add-quiz__link" to="/main/grammar/">
               <button className="button__to_bonus">Grammar Bonus</button>
             </NavLink>
@@ -46,7 +46,7 @@ const Video = (props) => {
           <div className = "speaking-content_container">
           <div className="content_title">
           IELTS video lessons and tips
-            <div className="content_description">
+            <div className="content_description-video">
             Prepare for the IELTS test with our video lessons that give you an explanation of the test and also tips, strategies and advice to improve your chances of success in IELTS.
 
 They explain the aspects of fluency and coherence, lexis and vocabulary, grammar and pronunciation that are considered during assessment.
